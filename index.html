@@ -26,15 +26,13 @@
           (function() {
            // if (typeof {{Session alive}} === 'undefined') {
               try {
-                // Get latitude and longitude of the visitor
-              //  var latitude = geoplugin_latitude();
-              //  var longitude = geoplugin_longitude();
-         
+
                 // Set up variables for the API call
                 var weather = 'Undefined';
                 var temperature = 'N/A';
-                var endpoint = 'api.openweathermap.org/data/2.5/weather?zip=94040,us';
-
+                var endpoint = 'http://api.openweathermap.org/data/2.5/weather?zip=94040,us&appid=d3b853a0b2072910034b2819201138ad';
+         
+                // Build a simple temperature parser
                 var parseTemp = function(temp) {            
                   var roundTemp;
                   roundTemp = 5 * Math.round(temp/5);
@@ -47,10 +45,9 @@
                   }
                   return 'N/A';
                 };
-         
-                // Make the API call
+
                 jQuery.ajax({
-                  type : 'POST',
+                  type : 'POST  ',
                   dataType : 'jsonp',
                   url : endpoint + '&units=metric&callback=?',
                   async : true,
@@ -62,21 +59,14 @@
                     console.log('Error while fetching weather data :: ' + errorThrown);
                   },
                   complete : function() {
-                    console.log('weather: ' + weather);
-                    console.log('temp: ' + temperature);
-                    });
+                    console.log(weather);
+                    console.log(temperature);
                   }
                 });
-              } catch(e) {
-                console.log(e.message);
-              }
-           // }    
-            
-            // Reset "session" cookie with a 30-minute expiration
-           /* var d = new Date();
-            d.setTime(d.getTime()+1800000);
-            var expires = "expires="+d.toGMTString();
-            document.cookie = "session=1; "+expires+"; path=/";*/
+  
+                } catch(e) {
+                  console.log(e.message);
+                }
           })();
         </script>
 
