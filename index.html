@@ -17,7 +17,68 @@
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-KVGRQR');
         </script>
-        <!-- End Google Tag Manager -->
+        <!-- End Google Tag Manager -->     
+
+        <script src="http://www.geoplugin.net/javascript.gp"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+        <script>
+          (function() {
+           // if (typeof {{Session alive}} === 'undefined') {
+              try {
+                // Get latitude and longitude of the visitor
+              //  var latitude = geoplugin_latitude();
+              //  var longitude = geoplugin_longitude();
+         
+                // Set up variables for the API call
+                var weather = 'Undefined';
+                var temperature = 'N/A';
+                var endpoint = 'api.openweathermap.org/data/2.5/weather?zip=94040,us';
+
+                var parseTemp = function(temp) {            
+                  var roundTemp;
+                  roundTemp = 5 * Math.round(temp/5);
+                  if (temp < 0) {
+                    return roundTemp + '°C - ' + (roundTemp - 5) + '°C';
+                  } else if (temp > 0) {
+                    return roundTemp + '°C - ' + (roundTemp + 5) + '°C';
+                  } else if (temp === 0) {
+                    return '0°C';
+                  }
+                  return 'N/A';
+                };
+         
+                // Make the API call
+                jQuery.ajax({
+                  type : 'POST',
+                  dataType : 'jsonp',
+                  url : endpoint + '&units=metric&callback=?',
+                  async : true,
+                  success : function(data) {
+                    weather = data['weather'][0]['main'];
+                    temperature = parseTemp(data['main']['temp']);
+                  },
+                  error : function(xhr, textStatus, errorThrown) {
+                    console.log('Error while fetching weather data :: ' + errorThrown);
+                  },
+                  complete : function() {
+                    console.log('weather: ' + weather);
+                    console.log('temp: ' + temperature);
+                    });
+                  }
+                });
+              } catch(e) {
+                console.log(e.message);
+              }
+           // }    
+            
+            // Reset "session" cookie with a 30-minute expiration
+           /* var d = new Date();
+            d.setTime(d.getTime()+1800000);
+            var expires = "expires="+d.toGMTString();
+            document.cookie = "session=1; "+expires+"; path=/";*/
+          })();
+        </script>
 
         <!-- GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
@@ -33,7 +94,8 @@
         <link href="layout.min.css" rel="stylesheet" type="text/css"/>
 
         <!-- Favicon -->
-        <link rel="shortcut icon" href="favicon.ico"/>
+        <link rel="shortcut icon" href="favicon.ico"/> 
+
     </head>
     <!-- END HEAD -->
 
