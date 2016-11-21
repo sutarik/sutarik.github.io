@@ -15,65 +15,12 @@
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-KVGRQR');
+            })(window,document,'script','dataLayer','GTM-PNGWKXG');
         </script>
         <!-- End Google Tag Manager -->     
 
         <script src="http://www.geoplugin.net/javascript.gp"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-        <script>
-                    (function() {
-           // if (typeof {{Session alive}} === 'undefined') {
-              try {
-              
-                var latitude = geoplugin_latitude();
-                        var longitude = geoplugin_longitude();
-                
-
-                // Set up variables for the API call
-                var weather = 'Undefined';
-                var temperature = 'N/A';
-                var endpoint = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&appid=d3b853a0b2072910034b2819201138ad';
-
-         
-                // Build a simple temperature parser
-                var parseTemp = function(temp) {            
-                  var roundTemp;
-                  roundTemp = 5 * Math.round(temp/5);
-                  if (temp < 0) {
-                    return roundTemp + '°C - ' + (roundTemp - 5) + '°C';
-                  } else if (temp > 0) {
-                    return roundTemp + '°C - ' + (roundTemp + 5) + '°C';
-                  } else if (temp === 0) {
-                    return '0°C';
-                  }
-                  return 'N/A';
-                };
-
-                jQuery.ajax({
-                  type : 'POST  ',
-                  dataType : 'jsonp',
-                  url : endpoint + '&units=metric&callback=?',
-                  async : true,
-                  success : function(data) {
-                    weather = data['weather'][0]['main'];
-                    temperature = parseTemp(data['main']['temp']);
-                  },
-                  error : function(xhr, textStatus, errorThrown) {
-                    console.log('Error while fetching weather data :: ' + errorThrown);
-                  },
-                  complete : function() {
-                    console.log(weather);
-                    console.log(temperature);
-                  }
-                });
-  
-                } catch(e) {
-                  console.log(e.message);
-                }
-          })();
-        </script>
 
         <!-- GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
@@ -99,9 +46,8 @@
 
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVGRQR"
-            height="0" width="0" style="display:none;visibility:hidden">  
-        </iframe>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PNGWKXG"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
