@@ -23,14 +23,19 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
         <script>
-          (function() {
+                    (function() {
            // if (typeof {{Session alive}} === 'undefined') {
               try {
+              
+                var latitude = geoplugin_latitude();
+                        var longitude = geoplugin_longitude();
+                
 
                 // Set up variables for the API call
                 var weather = 'Undefined';
                 var temperature = 'N/A';
-                var endpoint = 'http://api.openweathermap.org/data/2.5/weather?zip=94040,us&appid=d3b853a0b2072910034b2819201138ad';
+                var endpoint = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&appid=d3b853a0b2072910034b2819201138ad';
+
          
                 // Build a simple temperature parser
                 var parseTemp = function(temp) {            
