@@ -11,7 +11,10 @@ $.getJSON("./data/boilerplate.json", function(json) {
     triggers = json.containerVersion.trigger;
     variables = json.containerVersion.variable;
 
+    // store all tags, triggers and variables from container
     getTagId();
+    getTriggerId();
+    getVariableId();
 });
 
 function getTagId(){
@@ -25,17 +28,6 @@ function getTagId(){
     }
 }
 
-function getVariableId(){
-    for(var i=0;i<variables.length;i++){
-        var obj = {};
-        var name = variables[i].name;
-        var id = variables[i].variableId;
-        obj[name] = id;
-        variableIds.push(obj);
-    }
-
-}
-
 function getTriggerId(){
     for(var i=0;i<triggers.length;i++){
         var obj = {};
@@ -44,7 +36,16 @@ function getTriggerId(){
         obj[name] = id;
         triggerIds.push(obj);
     }
+}
 
+function getVariableId(){
+    for(var i=0;i<variables.length;i++){
+        var obj = {};
+        var name = variables[i].name;
+        var id = variables[i].variableId;
+        obj[name] = id;
+        variableIds.push(obj);
+    }
 }
 
 function getFolderId(){
