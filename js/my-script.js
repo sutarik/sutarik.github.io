@@ -1,7 +1,17 @@
 var obj;
 var tags, triggers, variables;
-
 var tagIds = [], variableIds = [], triggerIds = [], folderIds = [];
+
+// in this object is stored which tags are necessary for cerain checkbox
+// the structure
+// 'id-of-checkbox' : [array of tags indexes]
+var checkboxes = {
+    "checkbox1" : [1,2,3],
+    "checkbox2" : [3,4],
+    "checkbox3" : [5,6]
+};
+
+var checked = [];
 
 $.getJSON("./data/boilerplate.json", function(json) {
     console.log(json.containerVersion.tag); // this will show the info it in firebug console
@@ -55,8 +65,11 @@ function getFolderId(){
 function generateJSON(){
     // TODO
     // go through all the checked checkboxes
-    // check their arrays of tags ids
-    // store those ids to array
-    // go through these tags and create array of triggers which are usedd
-    // go through tags and triggers and indentify valu
+    // store ids of those which are checked into variable: checked
+    // in variable checkboxes, find those ids and store all the tags ids into one array
+    // go through this array of tags ids and create array of triggers which are used
+    // go through tags and triggers and indentify all variables used
+
+    var newJSON = JSON.stringify(obj); // '{"name":"binchen"}'
+    console.log(newJSON);
 }
