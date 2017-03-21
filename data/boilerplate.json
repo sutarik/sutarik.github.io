@@ -1,0 +1,361 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2017-03-16 08:36:31",
+    "containerVersion": {
+        "path": "accounts/1082570579/containers/6496074/versions/0",
+        "accountId": "1082570579",
+        "containerId": "6496074",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/1082570579/containers/6496074",
+            "accountId": "1082570579",
+            "containerId": "6496074",
+            "name": "testing.com",
+            "publicId": "GTM-MTXZ565",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1489653341702",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/1082570579/containers/6496074/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "1082570579",
+                "containerId": "6496074",
+                "tagId": "4",
+                "name": "GA - Event - jPlayer Video Interaction",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "nonInteraction",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "doubleClick",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setTrackerName",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "useDebugVersion",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventValue",
+                        "value": "{{DL - eventValue}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventCategory",
+                        "value": "{{DL - eventCategory}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableLinkId",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventAction",
+                        "value": "{{DL - eventAction}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventLabel",
+                        "value": "{{DL - eventLabel}}"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableEcommerce",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "{{GA - ID}}"
+                    }
+                ],
+                "fingerprint": "1489504149381",
+                "firingTriggerId": [
+                    "8"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            },
+            {
+                "accountId": "1082570579",
+                "containerId": "6496074",
+                "tagId": "1",
+                "name": "GA - Pageview",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "doubleClick",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setTrackerName",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "useDebugVersion",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "useHashAutoLink",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_PAGEVIEW"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "decorateFormsAutoLink",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableLinkId",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableEcommerce",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "{{GA - ID}}"
+                    }
+                ],
+                "fingerprint": "1489493494810",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            },
+            {
+                "accountId": "1082570579",
+                "containerId": "6496074",
+                "tagId": "2",
+                "name": "jPlayer Listener",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n\n  // everything in try/catch statement - in case page does not contain jplayer\n  try{\n    var breakpoint = '25%';\n    \n    $(\"#jquery_jplayer_33\").bind($.jPlayer.event.play, function(event) {\n      // currently played media\n      var mediaName = event.jPlayer.status.src;\n\n      dataLayer.push({\n        'event': 'jPlayerEvent',\n        'eventCategory': 'Video',\n        'eventAction': 'Play',\n        'eventLabel': mediaName\n      });\n\n    });\n\n    $(\"#jquery_jplayer_33\").bind($.jPlayer.event.pause, function(event) {\n      // currently played media\n      var mediaName = event.jPlayer.status.src;\n\n      dataLayer.push({\n        'event': 'jPlayerEvent',\n        'eventCategory': 'Video',\n        'eventAction': 'Pause',\n        'eventLabel': mediaName\n      });\n\n    });\n\n\n    $(\"#jquery_jplayer_33\").bind($.jPlayer.event.timeupdate, function(event) {\n      // percentage of video played\n      var playerTime = Math.round(event.jPlayer.status.currentPercentAbsolute);\n\n      // currently played media\n      var mediaName = event.jPlayer.status.src;\n\n\n      if(playerTime >= 25 && breakpoint == '25%'){\n        dataLayer.push({\n          'event': 'jPlayerEvent',\n          'eventCategory': 'Video',\n          'eventAction': breakpoint,\n          'eventLabel': mediaName\n        });\n\n        breakpoint = '50%';\n      }else if(playerTime >= 50 && breakpoint == '50%'){\n        dataLayer.push({\n          'event': 'jPlayerEvent',\n          'eventCategory': 'Video',\n          'eventAction': breakpoint,\n          'eventLabel': mediaName\n        });\n\n        breakpoint = '75%';\n      }else if(playerTime >= 75 && breakpoint == '75%'){\n        dataLayer.push({\n          'event': 'jPlayerEvent',\n          'eventCategory': 'Video',\n          'eventAction': breakpoint,\n          'eventLabel': mediaName\n        });\n\n        breakpoint = '100%';\n      }else if(playerTime == 100 && breakpoint == '100%'){\n        dataLayer.push({\n          'event': 'jPlayerEvent',\n          'eventCategory': 'Video',\n          'eventAction': breakpoint,\n          'eventLabel': mediaName\n        });\n\n        breakpoint = '0%';\n      }\n\n    });\n  }catch(e){}\n\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1489504492065",
+                "firingTriggerId": [
+                    "6"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "1082570579",
+                "containerId": "6496074",
+                "triggerId": "6",
+                "name": "DOM ready",
+                "type": "DOM_READY",
+                "fingerprint": "1489497698117"
+            },
+            {
+                "accountId": "1082570579",
+                "containerId": "6496074",
+                "triggerId": "8",
+                "name": "Event - jPlayer Event",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "jPlayerEvent"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1489653373302"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "1082570579",
+                "containerId": "6496074",
+                "variableId": "3",
+                "name": "DL - eventAction",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "eventAction"
+                    }
+                ],
+                "fingerprint": "1489502964888"
+            },
+            {
+                "accountId": "1082570579",
+                "containerId": "6496074",
+                "variableId": "4",
+                "name": "DL - eventCategory",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "eventCategory"
+                    }
+                ],
+                "fingerprint": "1489503005051"
+            },
+            {
+                "accountId": "1082570579",
+                "containerId": "6496074",
+                "variableId": "5",
+                "name": "DL - eventLabel",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "eventLabel"
+                    }
+                ],
+                "fingerprint": "1489503034427"
+            },
+            {
+                "accountId": "1082570579",
+                "containerId": "6496074",
+                "variableId": "6",
+                "name": "DL - eventValue",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "eventValue"
+                    }
+                ],
+                "fingerprint": "1489503054622"
+            },
+            {
+                "accountId": "1082570579",
+                "containerId": "6496074",
+                "variableId": "1",
+                "name": "GA - ID",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "UA-92803119-1"
+                    }
+                ],
+                "fingerprint": "1489493429425"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "1082570579",
+                "containerId": "6496074",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "1082570579",
+                "containerId": "6496074",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "1082570579",
+                "containerId": "6496074",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "1082570579",
+                "containerId": "6496074",
+                "type": "REFERRER",
+                "name": "Referrer"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/1082570579/containers/6496074/versions/0?apiLink=version"
+    }
+}
