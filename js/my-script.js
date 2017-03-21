@@ -1,5 +1,3 @@
-function getJSON(){
-    jQuery.get('http://sutarik.github.io/data/boilerplate.json', function(data) {
-        alert(data);
-    }); 
-}
+$.getJSON("./data/boilerplate.json", function(json) {
+    console.log(json); // this will show the info it in firebug console
+});
