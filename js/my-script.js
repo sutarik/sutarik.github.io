@@ -89,18 +89,29 @@ function getFolderId(){
 
 }
 
-function generateJSON(){
-    // TODO
-    // go through all the checked checkboxes
-    // store ids of those which are checked into variable: checked
-    // in variable checkboxes, find those ids and store all the tags ids into one array
-    // go through this array of tags ids and create array of triggers which are used
-    // go through tags and triggers and indentify all variables used
+function modifyObject(){
+    removeTags = [1,4];
+    // erase tags
     for(var i = 0; i < obj.containerVersion.tag.length; i++) {
-        if(obj.containerVersion.tag[i].tagId == "4") {
+        if(removeTags.indexOf(obj.containerVersion.tag[i].tagId)) {
             obj.containerVersion.tag.splice(i,1);
         }
     }
+/*
+    //erase triggers
+    for(var i = 0; i < obj.containerVersion.trigger.length; i++) {
+        if(obj.containerVersion.trigger[i].triggerId == "4") {
+            obj.containerVersion.trigger.splice(i,1);
+        }
+    }
+
+    //erase variable
+    for(var i = 0; i < obj.containerVersion.variable.length; i++) {
+        if(obj.containerVersion.variable[i].variableId == "4") {
+            obj.containerVersion.variable.splice(i,1);
+        }
+    }
+*/
 
     var newJSON = JSON.stringify(obj); // '{"name":"binchen"}'
     console.log(newJSON);
