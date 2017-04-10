@@ -6,15 +6,16 @@ var groupIds = [];
 // in this object is stored which tags are necessary for cerain checkbox
 // the structure
 // 'id-of-checkbox' : [array of tags indexes]
+/*
 var checkboxes = {
     "checkbox1" : [1,2,3],
     "checkbox2" : [3,4],
     "checkbox3" : [5,6]
 };
+*/
 
 // define all checkboxes:
-
-checkboxes = {
+var checkboxes = {
      "youtube" : {
         "tags" : [1,2,3],
         "triggers" : [1,2,3],
@@ -30,6 +31,7 @@ checkboxes = {
 }
 
 $.getJSON("./data/boilerplate.json", function(json) {
+    console.log(json);
     console.log(json.containerVersion.tag); // this will show the info it in firebug console
     obj = json;
 
