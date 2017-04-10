@@ -90,11 +90,13 @@ function getFolderId(){
 }
 
 function modifyObject(){
-    var removeTags = [1,4];
+    var removeTags = ["1","4"];
     // erase tags
     for(var i = 0; i < obj.containerVersion.tag.length; i++) {
+        console.log(obj.containerVersion.tag[i].tagId);
         if(removeTags.indexOf(obj.containerVersion.tag[i].tagId) >= 0) {
             obj.containerVersion.tag.splice(i,1);
+            i--;
         }
     }
 /*
