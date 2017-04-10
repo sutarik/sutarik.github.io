@@ -99,21 +99,29 @@ function modifyObject(){
             i--;
         }
     }
-/*
+
     //erase triggers
+    var removeTriggers = ["6"];
+    // erase triggers
     for(var i = 0; i < obj.containerVersion.trigger.length; i++) {
-        if(obj.containerVersion.trigger[i].triggerId == "4") {
+        console.log(obj.containerVersion.trigger[i].tagId);
+        if(removeTriggers.indexOf(obj.containerVersion.trigger[i].tagId) >= 0) {
             obj.containerVersion.trigger.splice(i,1);
+            i--;
         }
     }
 
-    //erase variable
+    //erase variables
+    var removeVariables = ["5","4","3"];
+    // erase variables
     for(var i = 0; i < obj.containerVersion.variable.length; i++) {
-        if(obj.containerVersion.variable[i].variableId == "4") {
+        console.log(obj.containerVersion.variable[i].tagId);
+        if(removeVariables.indexOf(obj.containerVersion.variable[i].tagId) >= 0) {
             obj.containerVersion.variable.splice(i,1);
+            i--;
         }
     }
-*/
+
 
     var newJSON = JSON.stringify(obj); // '{"name":"binchen"}'
     console.log(newJSON);
