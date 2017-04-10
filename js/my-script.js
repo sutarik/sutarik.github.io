@@ -104,8 +104,8 @@ function modifyObject(){
     var removeTriggers = ["6"];
     // erase triggers
     for(var i = 0; i < obj.containerVersion.trigger.length; i++) {
-        console.log(obj.containerVersion.trigger[i].tagId);
-        if(removeTriggers.indexOf(obj.containerVersion.trigger[i].tagId) >= 0) {
+        console.log(obj.containerVersion.trigger[i].triggerId);
+        if(removeTriggers.indexOf(obj.containerVersion.trigger[i].triggerId) >= 0) {
             obj.containerVersion.trigger.splice(i,1);
             i--;
         }
@@ -115,8 +115,8 @@ function modifyObject(){
     var removeVariables = ["5","4","3"];
     // erase variables
     for(var i = 0; i < obj.containerVersion.variable.length; i++) {
-        console.log(obj.containerVersion.variable[i].tagId);
-        if(removeVariables.indexOf(obj.containerVersion.variable[i].tagId) >= 0) {
+        console.log(obj.containerVersion.variable[i].variableId);
+        if(removeVariables.indexOf(obj.containerVersion.variable[i].variableId) >= 0) {
             obj.containerVersion.variable.splice(i,1);
             i--;
         }
