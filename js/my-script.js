@@ -90,7 +90,7 @@ function getFolderId(){
 }
 
 function modifyObject(){
-    removeTags = [1,4];
+    var removeTags = [1,4];
     // erase tags
     for(var i = 0; i < obj.containerVersion.tag.length; i++) {
         if(removeTags.indexOf(obj.containerVersion.tag[i].tagId)) {
