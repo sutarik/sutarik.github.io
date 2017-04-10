@@ -98,7 +98,7 @@ function generateJSON(){
     // go through tags and triggers and indentify all variables used
     for(var i = 0; i < obj.containerVersion.tag.length; i++) {
         if(obj.containerVersion.tag[i].tagId == "4") {
-            array.splice(i, 1);
+            obj.containerVersion.tag.splice(i, 1);
         }
     }
 
