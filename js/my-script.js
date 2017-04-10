@@ -92,17 +92,11 @@ function generateJSON(){
     console.log(newJSON);
 }
 
-
-$('#settings').submit(function(e){
-    var checked = $("input[type=checkbox]").prop('checked', true);
-    for(var i=0;i<checked.length;i++){
-        groupIds.push(checked[0].id);
-    }
-});
-
 $('#getGroups').click(function(e){
     var checked = $("input[type=checkbox]").prop('checked', true);
     for(var i=0;i<checked.length;i++){
-        groupIds.push(checked[0].id);
+        groupIds.push(checked[i].id);
     }
+
+    console.log(groupIds);
 });
