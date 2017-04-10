@@ -99,3 +99,10 @@ $('#settings').submit(function(e){
         groupIds.push(checked[0].id);
     }
 });
+
+$('#getGroups').click(function(e){
+    var checked = $("input[type=checkbox]").prop('checked', true);
+    for(var i=0;i<checked.length;i++){
+        groupIds.push(checked[0].id);
+    }
+});
