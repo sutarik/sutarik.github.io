@@ -96,8 +96,8 @@ function generateJSON(){
     // in variable checkboxes, find those ids and store all the tags ids into one array
     // go through this array of tags ids and create array of triggers which are used
     // go through tags and triggers and indentify all variables used
-    for(var i = 0; i < json.containerVersion.tag,length; i++) {
-        if(json.containerVersion.tag[i].tagId == "4") {
+    for(var i = 0; i < obj.containerVersion.tag,length; i++) {
+        if(obj.containerVersion.tag[i].tagId == "4") {
             array.splice(i, 1);
         }
     }
