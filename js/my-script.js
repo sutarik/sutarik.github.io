@@ -29,8 +29,6 @@ checkboxes = {
      }   
 }
 
-var checked = [];
-
 $.getJSON("./data/boilerplate.json", function(json) {
     console.log(json.containerVersion.tag); // this will show the info it in firebug console
     obj = json;
@@ -43,6 +41,15 @@ $.getJSON("./data/boilerplate.json", function(json) {
     getTagId();
     getTriggerId();
     getVariableId();
+});
+
+$('#getGroups').click(function(e){
+    var checked = $("input[type=checkbox]").prop('checked', true);
+    for(var i=0;i<checked.length;i++){
+        groupIds.push(checked[i].id);
+    }
+
+    console.log(groupIds);
 });
 
 function getTagId(){
@@ -91,12 +98,3 @@ function generateJSON(){
     var newJSON = JSON.stringify(obj); // '{"name":"binchen"}'
     console.log(newJSON);
 }
-
-$('#getGroups').click(function(e){
-    var checked = $("input[type=checkbox]").prop('checked', true);
-    for(var i=0;i<checked.length;i++){
-        groupIds.push(checked[i].id);
-    }
-
-    console.log(groupIds);
-});
