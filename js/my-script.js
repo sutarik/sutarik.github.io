@@ -11,6 +11,23 @@ var checkboxes = {
     "checkbox3" : [5,6]
 };
 
+// define all checkboxes:
+
+checkboxes = {
+     "youtube" : {
+        "tags" : [1,2,3],
+        "triggers" : [1,2,3],
+        "variables" : [2,3,4,5],
+        "folders" : [1]
+     },
+     "ecommerceClick" : {
+        "tags" : [1,2,3],
+        "triggers" : [1,2,3],
+        "variables" : [2,3,4,5],
+        "folders" : [2]
+     }   
+}
+
 var checked = [];
 
 $.getJSON("./data/boilerplate.json", function(json) {
@@ -73,3 +90,10 @@ function generateJSON(){
     var newJSON = JSON.stringify(obj); // '{"name":"binchen"}'
     console.log(newJSON);
 }
+
+
+$('#settings').submit(function(e){
+    var checked = $("input[type=checkbox]").prop('checked', true);
+
+    console.log(checked);
+});
