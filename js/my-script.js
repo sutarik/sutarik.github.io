@@ -1,6 +1,7 @@
 var obj;
 var tags, triggers, variables;
 var tagIds = [], variableIds = [], triggerIds = [], folderIds = [];
+var groupIds = [];
 
 // in this object is stored which tags are necessary for cerain checkbox
 // the structure
@@ -94,6 +95,7 @@ function generateJSON(){
 
 $('#settings').submit(function(e){
     var checked = $("input[type=checkbox]").prop('checked', true);
-
-    console.log(checked);
+    for(var i=0;i<checked.length;i++){
+        groupIds.push(checked[0].id);
+    }
 });
