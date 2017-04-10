@@ -97,7 +97,7 @@ function generateJSON(){
     // go through this array of tags ids and create array of triggers which are used
     // go through tags and triggers and indentify all variables used
     for(var i = 0; i < json.containerVersion.tag,length; i++) {
-        if(json.containerVersion.tag.tagId == "4") {
+        if(json.containerVersion.tag[i].tagId == "4") {
             array.splice(i, 1);
         }
     }
