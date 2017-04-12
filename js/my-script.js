@@ -52,7 +52,7 @@ function getGroups(){
     }
 
     console.log(groupIds);
-});
+}
 
 function getTagId(){
     // iterate through array with tags and store their Id's
