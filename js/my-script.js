@@ -45,7 +45,7 @@ $.getJSON("./data/boilerplate.json", function(json) {
     getVariableId();
 });
 
-$('#getGroups').click(function(e){
+function getGroups(){
     var checked = $("input:checked");
     for(var i=0; i<checked.length; i++){
         groupIds.push(checked[i].name);
