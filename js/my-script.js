@@ -16,9 +16,9 @@ var checkboxes = {
 
 // define all checkboxes:
 var checkboxes = {
-     "youtube" : {
-        "tags" : [1,2,3],
-        "triggers" : [1,2,3],
+     "ga-pageView" : {
+        "tags" : [3],
+        "triggers" : [37],
         "variables" : [2,3,4,5],
         "folders" : [1]
      },
@@ -44,6 +44,18 @@ $.getJSON("./data/boilerplate.json", function(json) {
     getTriggerId();
     getVariableId();
 });
+
+/*
+function findVariables(obj){
+    for (var k in obj){
+        if (typeof obj[k] == "object" && obj[k] !== null)
+            eachRecursive(obj[k]);
+        else{
+            if(k)
+        } 
+    }
+}
+*/
 
 function getGroups(){
     groupIds = [];
