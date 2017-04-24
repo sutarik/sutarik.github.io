@@ -78,7 +78,7 @@ function getTagId(){
     for(var i=0;i<tags.length;i++){
         var name = tags[i].name;
         var id = tags[i].tagId;
-        tagIds[name] = id;
+        tagIds[id] = name;
     }
 }
 
@@ -86,7 +86,7 @@ function getTriggerId(){
     for(var i=0;i<triggers.length;i++){
         var name = triggers[i].name;
         var id = triggers[i].triggerId;
-        triggerIds[name] = id;;
+        triggerIds[id] = name;
     }
 }
 
@@ -94,7 +94,7 @@ function getVariableId(){
     for(var i=0;i<variables.length;i++){
         var name = variables[i].name;
         var id = variables[i].variableId;
-        variableIds[name] = id;
+        variableIds[id] = name;
     }
 }
 
@@ -102,7 +102,7 @@ function getFolderId(){
     for(var i=0;i<folders.length;i++){
         var name = folders[i].name;
         var id = folders[i].folderId;
-        folderIds[name] = id;
+        folderIds[id] = name;
     }
 }
 
