@@ -182,14 +182,8 @@ function generateCheckboxes(){
         }else{
             var g = document.createElement('div');
             var l = document.createElement('label');
-
-            for (var key in folderIds) {
-                var value = folderIds[key];
-                if(value == tags[i].parentFolderId){
-                    l.appendChild(document.createTextNode(key));
-                    break;
-                }
-            }
+            
+            l.appendChild(document.createTextNode(tags[i].parentFolderId));
             g.id = tags[i].parentFolderId;
 
             g.appendChild(l);
