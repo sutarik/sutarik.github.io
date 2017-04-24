@@ -60,7 +60,7 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
 });
 
 function findTags(tags){
-    keepTags = tags;
+    keepTags = tags.slice();
 }
 
 function findTriggers(tags){
