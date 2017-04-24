@@ -66,7 +66,7 @@ function findVariables(){
         if(result){
             for(var j=0;j<result.length;j++){
                 var temp = result[j].replace(/{/g,'').replace(/}/g,'');
-                keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(newItem) : console.log("This item already exists");
+                keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log("This item already exists");
             }
         }
     }
