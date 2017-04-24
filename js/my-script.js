@@ -172,16 +172,18 @@ function generateCheckboxes(){
         }else{
             var g = document.createElement('div');
             var l = document.createElement('label');
-            var brr = document.createElement('br');
+            var br2 = document.createElement('br');
+            var emptyLine = document.createElement('br');
 
             l.appendChild(document.createTextNode(folderIds[tags[i].parentFolderId]));
             g.id = tags[i].parentFolderId;
 
+            g.appendChild(emptyLine);
             g.appendChild(l);
-            g.appendChild(brr);
+            g.appendChild(br);
             g.appendChild(checkbox);
             g.appendChild(label);
-            g.appendChild(br);
+            g.appendChild(br2);
 
             container.appendChild(g);
         }
