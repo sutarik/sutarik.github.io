@@ -125,7 +125,7 @@ function getBuiltInVariableId(bVariables){
     }
 }
 
-function getFolderId(){
+function getFolderId(folders){
     for(var i=0;i<folders.length;i++){
         var name = folders[i].name;
         var id = folders[i].folderId;
