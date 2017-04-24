@@ -149,9 +149,7 @@ function generateCheckboxes(){
     // TO DO
     // cez vsetky tagy, vytvorit checkbox
     // ked ho budem pridavat do body tak pozriet ci existuje taka grupa / based on folder
-    var checkbox;
     var container = document.getElementById('checkboxes');
-    var group;
 
     for(var i=0;i<tags.length;i++){
         var checkbox = document.createElement('input');
@@ -165,8 +163,7 @@ function generateCheckboxes(){
         label.appendChild(document.createTextNode(tags[i].name));
 
         var br = document.createElement('br');
-
-        group = document.getElementById(tags[i].parentFolderId);
+        var group = document.getElementById(tags[i].parentFolderId);
         
         if(group){
             group.appendChild(checkbox);
@@ -175,12 +172,13 @@ function generateCheckboxes(){
         }else{
             var g = document.createElement('div');
             var l = document.createElement('label');
+            var brr = document.createElement('br');
 
             l.appendChild(document.createTextNode(folderIds[tags[i].parentFolderId]));
             g.id = tags[i].parentFolderId;
 
             g.appendChild(l);
-            g.appendChild(br);
+            g.appendChild(brr);
             g.appendChild(checkbox);
             g.appendChild(label);
             g.appendChild(br);
