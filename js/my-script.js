@@ -65,7 +65,7 @@ function findVariables(){
     
         for(var j=0;i<result.length;j++){
             var temp = result[j].replace(/{/g,'').replace(/}/g,'');
-            keepVariables.push(variaNames[temp]);
+            keepVariables.push(variableNames[temp]);
         }
     }
 }
