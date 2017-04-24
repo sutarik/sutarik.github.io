@@ -157,6 +157,7 @@ function generateCheckboxes(){
     // cez vsetky tagy, vytvorit checkbox
     // ked ho budem pridavat do body tak pozriet ci existuje taka grupa / based on folder
     var checkbox;
+    var container = document.getElementById('checkboxes');
 
     for(var i=0;i<tags.length;i++){
         var checkbox = document.createElement('input');
