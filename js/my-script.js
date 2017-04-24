@@ -38,6 +38,7 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     obj = json;
 
     var tags = json.containerVersion.tag;
+   // var keepTags = json.containerVersion.tag;
     var triggers = json.containerVersion.trigger;
     var variables = json.containerVersion.variable;
     var bVariables = json.containerVersion.builtInVariable;
@@ -53,7 +54,7 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     //generate checkboxes
     generateCheckboxes(tags,folders);
     // find variables in tags
-    findTags(keepTags);
+    findTags(tags);
     findTriggers(keepTags);
     findVariables(keepTags,keepTriggers);
     findFolders(keepTags,keepTriggers,keepVariables);
