@@ -51,7 +51,7 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     getFolderId(folders);
 
     //generate checkboxes
-    generateCheckboxes();
+    generateCheckboxes(tags,folders);
     // find variables in tags
     findVariables();
 });
@@ -172,7 +172,7 @@ function modifyObject(){
 }
 
 
-function generateCheckboxes(){
+function generateCheckboxes(tags, folders){
     // TO DO
     // cez vsetky tagy, vytvorit checkbox
     // ked ho budem pridavat do body tak pozriet ci existuje taka grupa / based on folder
