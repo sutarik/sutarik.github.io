@@ -30,7 +30,7 @@ var checkboxes = {
      }   
 }
 
-$.getJSON("./data/boilerplate.json", function(json) {
+$.getJSON("./data/boilerplate-new.json", function(json) {
     console.log(json);
     console.log(json.containerVersion.tag); // this will show the info it in firebug console
     obj = json;
@@ -182,7 +182,7 @@ function generateCheckboxes(){
         }else{
             var g = document.createElement('div');
             var l = document.createElement('label');
-            
+
             l.appendChild(document.createTextNode(tags[i].parentFolderId));
             g.id = tags[i].parentFolderId;
 
