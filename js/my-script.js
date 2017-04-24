@@ -170,8 +170,11 @@ function generateCheckboxes(){
         label.htmlFor = tags[i].name.replace(/ /g,'');
         label.appendChild(document.createTextNode(tags[i].name));
 
+        var br = document.createElement('br');
+
         container.appendChild(checkbox);
         container.appendChild(label);
+        container.appendChild(br);
     }
 
 }
