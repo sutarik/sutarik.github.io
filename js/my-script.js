@@ -54,9 +54,30 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     generateCheckboxes(tags,folders);
     // find variables in tags
     findVariables(tags);
+    findTriggers(tags);
 });
 
+function findTriggers(tags){
+    for(var i=0;i<tags.length;i++){
+        //cez firing a blocking triggers
+        // popushovat do pola idcka
+        if(tags[i].blockingTriggerId){
+            var blockingTriggers = tags[i].blockingTriggerId;
+            for(var j=0; j<blockingTriggers.length; j++){
+                keepTriggers.indexOf(blockingTriggers[j]) === -1 ? keepTriggers.push(blockingTriggers[j]) : console.log('already exists');
+            }
+        }
 
+        if(tags[i].firingTriggerId){
+            var firingTriggers = tags[i].firingTriggerId;
+            for(var j=0; j<firingTriggers.length; j++){
+                keepTriggers.indexOf(firingTriggers[j]) === -1 ? keepTriggers.push(firingTriggers[j]) : console.log('already exists');
+            }
+        }
+    }
+}
+
+// same function for triggers
 function findVariables(tags){
    // TODO nepojdem cez vsetky tagy ale cez vsetky oznacene tagy
    var reg = /{{[^}]*}}/g;
@@ -77,6 +98,9 @@ function findVariables(tags){
     }
 }
 
+function folders(tags,variables, triggers){
+   // TODO
+}
 
 function getGroups(){
     groupIds = [];
