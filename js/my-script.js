@@ -62,10 +62,12 @@ function findVariables(){
    for(var i=0;i<tags.length;i++){
         var text = JSON.stringify(tags[i]);
         var result = text.match(reg);
-    
-        for(var j=0;j<result.length;j++){
-            var temp = result[j].replace(/{/g,'').replace(/}/g,'');
-            keepVariables.push(variableNames[temp]);
+        
+        if(result){
+            for(var j=0;j<result.length;j++){
+                var temp = result[j].replace(/{/g,'').replace(/}/g,'');
+                keepVariables.push(variableNames[temp]);
+            }
         }
     }
 }
