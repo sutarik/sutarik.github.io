@@ -44,6 +44,7 @@ $.getJSON("./data/boilerplate.json", function(json) {
     getTagId();
     getTriggerId();
     getVariableId();
+    getFolderId();
 
     //generate checkboxes
     generateCheckboxes();
@@ -158,6 +159,7 @@ function generateCheckboxes(){
     // ked ho budem pridavat do body tak pozriet ci existuje taka grupa / based on folder
     var checkbox;
     var container = document.getElementById('checkboxes');
+    var group;
 
     for(var i=0;i<tags.length;i++){
         var checkbox = document.createElement('input');
@@ -172,9 +174,25 @@ function generateCheckboxes(){
 
         var br = document.createElement('br');
 
-        container.appendChild(checkbox);
-        container.appendChild(label);
-        container.appendChild(br);
+        group = document.getElementById(tags[i].parentFolderId);
+        if(group){
+            group.appendChild(checkbox);
+            group.appendChild(label);
+            group.appendChild(br);
+        }else{
+            var g = document.createElement('div');
+            var l = document.createElement('label');
+
+            l.appendChild(document.createTextNode(tags[i].parentFolderId));
+            g.id = tags[i].parentFolderId;
+
+            g.appendChild(l);
+            g.appendChild(checkbox);
+            g.appendChild(label);
+            g.appendChild(br);
+
+            container.appendChild(g);
+        }
     }
 
 }
