@@ -167,7 +167,7 @@ function generateCheckboxes(){
 
         var label = document.createElement('label');
         label.htmlFor = tags[i].name.replace(/ /g,'');
-        label.appendChild(document.createTextNode(tags[i].name);
+        label.appendChild(document.createTextNode(tags[i].name));
 
         container.appendChild(checkbox);
         container.appendChild(label);
