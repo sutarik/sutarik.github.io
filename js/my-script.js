@@ -1,7 +1,6 @@
 var obj;
-var tags, triggers, variables, folders;
-var tagIds = {}, variableIds = {}, triggerIds = {}, folderIds = {};
-var variableNames = {};
+var tagIds = {}, variableIds = {}, bVariableIds = {}, triggerIds = {}, folderIds = {};
+var variableNames = {}, bVariableNames = {};
 var groupIds = [];
 
 var keepVariables = [], keepTags = [], keepTriggers = [], keepFolders = [];
@@ -38,16 +37,18 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     console.log(json.containerVersion.tag); // this will show the info it in firebug console
     obj = json;
 
-    tags = json.containerVersion.tag;
-    triggers = json.containerVersion.trigger;
-    variables = json.containerVersion.variable;
-    folders = json.containerVersion.folder;
+    var tags = json.containerVersion.tag;
+    var triggers = json.containerVersion.trigger;
+    var variables = json.containerVersion.variable;
+    var bVariables = json.containerVersion.builtInVariable;
+    var folders = json.containerVersion.folder;
 
     // store all tags, triggers and variables from container
-    getTagId();
-    getTriggerId();
-    getVariableId();
-    getFolderId();
+    getTagId(tags);
+    getTriggerId(triggers);
+    getVariableId(variables);
+    getBuiltInVariableId(bVariables);
+    getFolderId(folders);
 
     //generate checkboxes
     generateCheckboxes();
@@ -65,11 +66,13 @@ function findVariables(){
         
         if(result){
             for(var j=0;j<result.length;j++){
-                if(variableNames[temp] == undefined){
-                    console.log(result[j]);
-                }
+                
                 var temp = result[j].replace(/{/g,'').replace(/}/g,'');
-                keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log("This item already exists");
+                if(variableNames[temp] == undefined){
+                    keepVariables.indexOf(bVariableNames[temp]) === -1 ? keepVariables.push(bVariableNames[temp]) : console.log("This item already exists");
+                }else{
+                    keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log("This item already exists");
+                }
             }
         }
     }
@@ -87,7 +90,7 @@ function getGroups(){
     console.log(groupIds);
 }
 
-function getTagId(){
+function getTagId(tags){
     // iterate through array with tags and store their Id's
     for(var i=0;i<tags.length;i++){
         var name = tags[i].name;
@@ -96,7 +99,7 @@ function getTagId(){
     }
 }
 
-function getTriggerId(){
+function getTriggerId(triggers){
     for(var i=0;i<triggers.length;i++){
         var name = triggers[i].name;
         var id = triggers[i].triggerId;
@@ -104,12 +107,21 @@ function getTriggerId(){
     }
 }
 
-function getVariableId(){
+function getVariableId(variables){
     for(var i=0;i<variables.length;i++){
         var name = variables[i].name;
         var id = variables[i].variableId;
         variableIds[id] = name;
         variableNames[name] = id;
+    }
+}
+
+function getBuiltInVariableId(bVariables){
+    for(var i=0;i<bVariables.length;i++){
+        var name = bVariables[i].name;
+        var id = bVariables[i].variableId;
+        bVariableIds[id] = name;
+        bVariableNames[name] = id;
     }
 }
 
