@@ -59,7 +59,7 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     findFolders(keepTags,keepTriggers,keepVariables);
 });
 
-function findTags(){
+function findTags(tags){
     keepTags = tags;
 }
 
