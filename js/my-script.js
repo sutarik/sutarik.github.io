@@ -65,7 +65,7 @@ function findVariables(){
         
         if(result){
             for(var j=0;j<result.length;j++){
-                if(variablesNames[temp] == undefined){
+                if(variableNames[temp] == undefined){
                     console.log(result[j]);
                 }
                 var temp = result[j].replace(/{/g,'').replace(/}/g,'');
