@@ -63,7 +63,7 @@ function findVariables(){
         var text = JSON.stringify(tags[i]);
         var result = text.match(reg);
     
-        for(var j=0;i<result.length;j++){
+        for(var j=0;j<result.length;j++){
             var temp = result[j].replace(/{/g,'').replace(/}/g,'');
             keepVariables.push(variableNames[temp]);
         }
