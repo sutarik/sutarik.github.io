@@ -1,6 +1,6 @@
 var obj;
 var tags, triggers, variables, folders;
-var tagIds = [], variableIds = [], triggerIds = [], folderIds = [];
+var tagIds = {}, variableIds = {}, triggerIds = {}, folderIds = {};
 var groupIds = [];
 
 // in this object is stored which tags are necessary for cerain checkbox
@@ -76,41 +76,33 @@ function getGroups(){
 function getTagId(){
     // iterate through array with tags and store their Id's
     for(var i=0;i<tags.length;i++){
-        var obj = {};
         var name = tags[i].name;
         var id = tags[i].tagId;
-        obj[name] = id;
-        tagIds.push(obj);
+        tagIds[name] = id;
     }
 }
 
 function getTriggerId(){
     for(var i=0;i<triggers.length;i++){
-        var obj = {};
         var name = triggers[i].name;
         var id = triggers[i].triggerId;
-        obj[name] = id;
-        triggerIds.push(obj);
+        triggerIds[name] = id;;
     }
 }
 
 function getVariableId(){
     for(var i=0;i<variables.length;i++){
-        var obj = {};
         var name = variables[i].name;
         var id = variables[i].variableId;
-        obj[name] = id;
-        variableIds.push(obj);
+        variableIds[name] = id;
     }
 }
 
 function getFolderId(){
     for(var i=0;i<folders.length;i++){
-        var obj = {};
         var name = folders[i].name;
         var id = folders[i].folderId;
-        obj[name] = id;
-        folderIds.push(obj);
+        folderIds[name] = id;
     }
 }
 
