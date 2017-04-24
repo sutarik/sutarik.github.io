@@ -1,7 +1,10 @@
 var obj;
 var tags, triggers, variables, folders;
 var tagIds = {}, variableIds = {}, triggerIds = {}, folderIds = {};
+var variableNames = {};
 var groupIds = [];
+
+var keepVariables = [], keepTags = [], keepTriggers = [], keepFolders = [];
 
 // in this object is stored which tags are necessary for cerain checkbox
 // the structure
@@ -54,11 +57,16 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
 
 
 function findVariables(){
-  /*  for(var i=0;i<tags.length;i++){
-        var x = tags[i].stringify;
-    }*/
-
-    console.log(tags[0].stringify());
+    // TODO nepojdem cez vsetky tagy ale cez vsetky oznacene tagy
+   for(var i=0;i<tags.length;i++){
+        var text = JSON.stringify(tags[0]);
+        var result = text.match(reg);
+    
+        for(var j=0;i<result.length;j++){
+            var temp = result[j].replace(/{/g,'').replace(/}/g,'');
+            keepVariables.push(variaNames[temp]);
+        }
+    }
 }
 
 
@@ -95,6 +103,7 @@ function getVariableId(){
         var name = variables[i].name;
         var id = variables[i].variableId;
         variableIds[id] = name;
+        variableNames[name] = id;
     }
 }
 
