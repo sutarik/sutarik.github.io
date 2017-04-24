@@ -1,5 +1,5 @@
 var obj;
-var tags, triggers, variables;
+var tags, triggers, variables, folders;
 var tagIds = [], variableIds = [], triggerIds = [], folderIds = [];
 var groupIds = [];
 
@@ -38,11 +38,15 @@ $.getJSON("./data/boilerplate.json", function(json) {
     tags = json.containerVersion.tag;
     triggers = json.containerVersion.trigger;
     variables = json.containerVersion.variable;
+    folders = json.containerVersion.folder;
 
     // store all tags, triggers and variables from container
     getTagId();
     getTriggerId();
     getVariableId();
+
+    //generate checkboxes
+    generateCheckboxes();
 });
 
 /*
@@ -100,7 +104,13 @@ function getVariableId(){
 }
 
 function getFolderId(){
-
+    for(var i=0;i<folders.length;i++){
+        var obj = {};
+        var name = folders[i].name;
+        var id = folders[i].folderId;
+        obj[name] = id;
+        folderIds.push(obj);
+    }
 }
 
 function modifyObject(){
@@ -139,4 +149,28 @@ function modifyObject(){
 
     var newJSON = JSON.stringify(obj); // '{"name":"binchen"}'
     console.log(newJSON);
+}
+
+
+fucntion generateCheckboxes(){
+    // TO DO
+    // cez vsetky tagy, vytvorit checkbox
+    // ked ho budem pridavat do body tak pozriet ci existuje taka grupa / based on folder
+    var checkbox;
+
+    for(var i=0;i<tags.length;i++){
+        var checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
+        checkbox.name = tags[i].name.replace(/ /g,'');
+        checkbox.value = tags[i].tagId;
+        checkbox.id = tags[i].name.replace(/ /g,'');
+
+        var label = document.createElement('label');
+        label.htmlFor = tags[i].name.replace(/ /g,'');
+        label.appendChild(document.createTextNode(tags[i].name);
+
+        container.appendChild(checkbox);
+        container.appendChild(label);
+    }
+
 }
