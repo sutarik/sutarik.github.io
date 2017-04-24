@@ -167,6 +167,7 @@ function generateCheckboxes(){
         var br = document.createElement('br');
 
         group = document.getElementById(tags[i].parentFolderId);
+        
         if(group){
             group.appendChild(checkbox);
             group.appendChild(label);
@@ -175,7 +176,7 @@ function generateCheckboxes(){
             var g = document.createElement('div');
             var l = document.createElement('label');
 
-            l.appendChild(document.createTextNode(tags[i].parentFolderId));
+            l.appendChild(document.createTextNode(folderIds[tags[i].parentFolderId]));
             g.id = tags[i].parentFolderId;
 
             g.appendChild(l);
