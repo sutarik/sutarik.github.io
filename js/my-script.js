@@ -120,7 +120,7 @@ function findVariables(tags,triggers){
     }
 }
 
-function folders(tags,triggers,variables){
+function findFolders(tags,triggers,variables){
    // TODO
 }
 
