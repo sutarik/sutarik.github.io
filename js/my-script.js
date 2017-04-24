@@ -57,9 +57,10 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
 
 
 function findVariables(){
-    // TODO nepojdem cez vsetky tagy ale cez vsetky oznacene tagy
+   // TODO nepojdem cez vsetky tagy ale cez vsetky oznacene tagy
+   var reg = /{{[^}]*}}/g;
    for(var i=0;i<tags.length;i++){
-        var text = JSON.stringify(tags[0]);
+        var text = JSON.stringify(tags[i]);
         var result = text.match(reg);
     
         for(var j=0;i<result.length;j++){
