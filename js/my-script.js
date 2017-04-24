@@ -53,9 +53,15 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     //generate checkboxes
     generateCheckboxes(tags,folders);
     // find variables in tags
-    findVariables(tags);
-    findTriggers(tags);
+    findTags(keepTags);
+    findTriggers(keepTags);
+    findVariables(keepTags,keepTriggers);
+    findFolders(keepTags,keepTriggers,keepVariables);
 });
+
+function findTags(){
+    keepTags = tags;
+}
 
 function findTriggers(tags){
     for(var i=0;i<tags.length;i++){
@@ -78,7 +84,7 @@ function findTriggers(tags){
 }
 
 // same function for triggers
-function findVariables(tags){
+function findVariables(tags,triggers){
    // TODO nepojdem cez vsetky tagy ale cez vsetky oznacene tagy
    var reg = /{{[^}]*}}/g;
    for(var i=0;i<tags.length;i++){
@@ -96,9 +102,25 @@ function findVariables(tags){
             }
         }
     }
+
+    for(var i=0;i<triggers.length;i++){
+        var text = JSON.stringify(triggers[i]);
+        var result = text.match(reg);
+        
+        if(result){
+            for(var j=0;j<result.length;j++){
+                var temp = result[j].replace(/{/g,'').replace(/}/g,'');
+                if(variableNames[temp] == undefined){
+                      keepBuiltInVariables.indexOf(temp) === -1 ? keepBuiltInVariables.push(temp) : console.log('already exists');
+                }else{
+                    keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log('already exists');
+                }
+            }
+        }
+    }
 }
 
-function folders(tags,variables, triggers){
+function folders(tags,triggers,variables){
    // TODO
 }
 
