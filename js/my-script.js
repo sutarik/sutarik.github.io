@@ -48,19 +48,19 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
 
     //generate checkboxes
     generateCheckboxes();
+    // find variables in tags
+    findVariables();
 });
 
-/*
-function findVariables(obj){
-    for (var k in obj){
-        if (typeof obj[k] == "object" && obj[k] !== null)
-            eachRecursive(obj[k]);
-        else{
-            if(k)
-        } 
-    }
+
+function findVariables(){
+  /*  for(var i=0;i<tags.length;i++){
+        var x = tags[i].stringify;
+    }*/
+
+    console.log(tags[0].stringify());
 }
-*/
+
 
 function getGroups(){
     groupIds = [];
