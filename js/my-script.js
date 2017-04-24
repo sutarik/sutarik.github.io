@@ -187,6 +187,7 @@ function generateCheckboxes(){
             g.id = tags[i].parentFolderId;
 
             g.appendChild(l);
+            g.appendChild(br);
             g.appendChild(checkbox);
             g.appendChild(label);
             g.appendChild(br);
