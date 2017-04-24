@@ -53,11 +53,11 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     //generate checkboxes
     generateCheckboxes(tags,folders);
     // find variables in tags
-    findVariables();
+    findVariables(tags);
 });
 
 
-function findVariables(){
+function findVariables(tags){
    // TODO nepojdem cez vsetky tagy ale cez vsetky oznacene tagy
    var reg = /{{[^}]*}}/g;
    for(var i=0;i<tags.length;i++){
