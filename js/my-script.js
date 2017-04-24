@@ -68,9 +68,9 @@ function findVariables(tags){
             for(var j=0;j<result.length;j++){
                 var temp = result[j].replace(/{/g,'').replace(/}/g,'');
                 if(variableNames[temp] == undefined){
-                      keepBuiltInVariables.indexOf(bVariableNames[temp]) === -1 ? keepVariables.push(temp) : continue;
+                      keepBuiltInVariables.indexOf(bVariableNames[temp]) === -1 ? keepBuiltInVariables.push(temp) : console.log('already exists');
                 }else{
-                    keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : continue;
+                    keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log('already exists');
                 }
             }
         }
