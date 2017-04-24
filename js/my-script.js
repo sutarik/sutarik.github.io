@@ -3,7 +3,7 @@ var tagIds = {}, variableIds = {}, bVariableIds = {}, triggerIds = {}, folderIds
 var variableNames = {}, bVariableNames = {};
 var groupIds = [];
 
-var keepVariables = [], keepTags = [], keepTriggers = [], keepFolders = [];
+var keepVariables = [], keepBuiltInVariables = [], keepTags = [], keepTriggers = [], keepFolders = [];
 
 // in this object is stored which tags are necessary for cerain checkbox
 // the structure
@@ -66,12 +66,11 @@ function findVariables(tags){
         
         if(result){
             for(var j=0;j<result.length;j++){
-                
                 var temp = result[j].replace(/{/g,'').replace(/}/g,'');
                 if(variableNames[temp] == undefined){
-                    keepVariables.indexOf(bVariableNames[temp]) === -1 ? keepVariables.push(bVariableNames[temp]) : console.log("This item already exists");
+                      keepBuiltInVariables.indexOf(bVariableNames[temp]) === -1 ? keepVariables.push(temp) : continue;
                 }else{
-                    keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log("This item already exists");
+                    keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : continue;
                 }
             }
         }
