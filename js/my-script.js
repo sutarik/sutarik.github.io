@@ -96,7 +96,7 @@ function findVariables(tags,triggers){
             for(var j=0;j<result.length;j++){
                 var temp = result[j].replace(/{/g,'').replace(/}/g,'');
                 if(variableNames[temp] == undefined){
-                      keepBuiltInVariables.indexOf(temp) === -1 ? keepBuiltInVariables.push(temp) : console.log('already exists');
+                    keepBuiltInVariables.indexOf(temp) === -1 ? keepBuiltInVariables.push(temp) : console.log('already exists');
                 }else{
                     keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log('already exists');
                 }
@@ -112,7 +112,7 @@ function findVariables(tags,triggers){
             for(var j=0;j<result.length;j++){
                 var temp = result[j].replace(/{/g,'').replace(/}/g,'');
                 if(variableNames[temp] == undefined){
-                      keepBuiltInVariables.indexOf(temp) === -1 ? keepBuiltInVariables.push(temp) : console.log('already exists');
+                    keepBuiltInVariables.indexOf(temp) === -1 ? keepBuiltInVariables.push(temp) : console.log('already exists');
                 }else{
                     keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log('already exists');
                 }
@@ -122,7 +122,31 @@ function findVariables(tags,triggers){
 }
 
 function findFolders(tags,triggers,variables){
-   // TODO
+   // TODO cez idcka
+   // hladat parentFolderId a storenut to do keepFolders
+
+   for(var i=0;i<tags.length;i++){
+        if(keepTags.indexOf(tags[i].tagId)){
+            keepFolders.indexOf(tags[i].parentFolderId) === -1 ? keepFolders.push(tags[i].parentFolderId) : console.log('folder already exists');
+        }
+   }
+
+   for(var i=0;i<triggers.length;i++){
+        if(keepVariables.indexOf(triggers[i].triggerId)){
+            keepFolders.indexOf(triggers[i].parentFolderId) === -1 ? keepFolders.push(triggers[i].parentFolderId) : console.log('folder already exists');
+        }
+   }
+
+   for(var i=0;i<variables.length;i++){
+        if(keepTags.indexOf(variables[i].variableId)){
+            keepFolders.indexOf(variables[i].parentFolderId) === -1 ? keepFolders.push(variables[i].parentFolderId) : console.log('folder already exists');
+        }
+   }
+
+}
+
+function delete(tags, triggers, variables, folders){
+
 }
 
 function getGroups(){
