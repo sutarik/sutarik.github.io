@@ -3,7 +3,8 @@ var tagIds = {}, variableIds = {}, bVariableIds = {}, triggerIds = {}, folderIds
 var variableNames = {}, bVariableNames = {};
 var groupIds = [];
 
-var keepVariables = [], keepBuiltInVariables = [], keepTags = [], keepTriggers = [], keepTriggers2 = [], keepFolders = [];
+var keepVariables = [], keepBuiltInVariables = [], keepTags = [], keepTriggers = [], keepFolders = [];
+var keepVariablesID = [], keepBuiltInVariablesID = [], keepTagsID = [], keepTriggersID = [], keepFoldersID = [];
 var tags, triggers, variables, folders, bVariables;
 
 // in this object is stored which tags are necessary for cerain checkbox
@@ -68,6 +69,7 @@ function findTags(groupIds){
         for(var j=0;j<groupIds.length;j++){
             if(tags[i].tagId == groupIds[j]){
                 keepTags.push(tags[i]);
+                keepTagsID.push(tags[i].tagId);
             }
         }
     }
@@ -87,6 +89,7 @@ function findTriggers(keepTags){
                 for(var k=0;k<triggers.length;k++){
                     if(triggers[k].triggerId == blockingTriggers[j]){
                         keepTriggers.indexOf(triggers[k]) === -1 ? keepTriggers.push(triggers[k]) : console.log('already exists');
+                        keepTriggersID.indexOf(triggers[k].triggerId) === -1 ? keepTriggersID.push(triggers[k].triggerId) : console.log('already exists');
                         break;
                     }
                 }
@@ -102,6 +105,7 @@ function findTriggers(keepTags){
                 for(var k=0;k<triggers.length;k++){
                     if(triggers[k].triggerId == firingTriggers[j]){
                         keepTriggers.indexOf(triggers[k]) === -1 ? keepTriggers.push(triggers[k]) : console.log('already exists');
+                        keepTriggersID.indexOf(triggers[k].triggerId) === -1 ? keepTriggersID.push(triggers[k].triggerId) : console.log('already exists');
                         break;
                     }
                 }
@@ -134,6 +138,7 @@ function findVariables(keepTags,keepTriggers){
                    for(var k=0;k<variables.length;k++){
                         if(variables[k].variableId == variableNames[temp]){
                             keepVariables.indexOf(variables[k]) === -1 ? keepVariables.push(variables[k]) : console.log('already exists');
+                            keepVariablesID.indexOf(variables[k].variableId) === -1 ? keepVariablesID.push(variables[k].variableId) : console.log('already exists');
                             break;
                         }
                     }
@@ -156,6 +161,7 @@ function findVariables(keepTags,keepTriggers){
                    for(var k=0;k<variables.length;k++){
                         if(variables[k].variableId == variableNames[temp]){
                             keepVariables.indexOf(variables[k]) === -1 ? keepVariables.push(variables[k]) : console.log('already exists');
+                            keepVariablesID.indexOf(variables[k].variableId) === -1 ? keepVariablesID.push(variables[k].variableId) : console.log('already exists');
                             break;
                         }
                     }
@@ -182,6 +188,7 @@ function findVariables(keepTags,keepTriggers){
                        for(var k=0;k<variables.length;k++){
                             if(variables[k].variableId == variableNames[temp]){
                                 keepVariables.indexOf(variables[k]) === -1 ? keepVariables.push(variables[k]) : console.log('already exists');
+                                keepVariablesID.indexOf(variables[k].variableId) === -1 ? keepVariablesID.push(variables[k].variableId) : console.log('already exists');
                                 break;
                             }
                         }
@@ -205,6 +212,7 @@ function findFolders(keepTags,keepTriggers,keepVariables){
         for(var j=0;j<folders.length;j++){
             if(folders[j].folderId == keepTags[i].parentFolderId){
                 keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
+                keepFoldersID.indexOf(folders[j].folderId) === -1 ? keepFoldersID.push(folders[j].folderID) : console.log('folder already exists');
             }
         }
    }
@@ -213,6 +221,7 @@ function findFolders(keepTags,keepTriggers,keepVariables){
         for(var j=0;j<folders.length;j++){
             if(folders[j].folderId == keepTriggers[i].parentFolderId){
                 keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
+                keepFoldersID.indexOf(folders[j].folderId) === -1 ? keepFoldersID.push(folders[j].folderID) : console.log('folder already exists');
             }
         }   
     }
@@ -221,10 +230,12 @@ function findFolders(keepTags,keepTriggers,keepVariables){
         for(var j=0;j<folders.length;j++){
             if(folders[j].folderId == keepVariables[i].parentFolderId){
                 keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
+                keepFoldersID.indexOf(folders[j].folderId) === -1 ? keepFoldersID.push(folders[j].folderID) : console.log('folder already exists');
             }
         }
    }
 
+   modifyObject();
 }
 
 function deleteUnchecked(tags, triggers, variables, folders){
@@ -288,41 +299,55 @@ function getFolderId(){
 }
 
 function modifyObject(){
-    var removeTags = ["1","4"];
+
     // erase tags
     for(var i = 0; i < obj.containerVersion.tag.length; i++) {
         console.log(obj.containerVersion.tag[i].tagId);
-        if(removeTags.indexOf(obj.containerVersion.tag[i].tagId) >= 0) {
+        var tId = obj.containerVersion.tag[i].tagId;
+
+        if(keepTagsID.indexOf(tId) == -1){
             obj.containerVersion.tag.splice(i,1);
             i--;
         }
     }
 
-    //erase triggers
-    var removeTriggers = ["6"];
     // erase triggers
     for(var i = 0; i < obj.containerVersion.trigger.length; i++) {
         console.log(obj.containerVersion.trigger[i].triggerId);
-        if(removeTriggers.indexOf(obj.containerVersion.trigger[i].triggerId) >= 0) {
+        var trId = obj.containerVersion.trigger[i].triggerId;
+
+        if(keepTriggersID.indexOf(trId) == -1){
             obj.containerVersion.trigger.splice(i,1);
             i--;
         }
     }
 
-    //erase variables
-    var removeVariables = ["5","4","3"];
     // erase variables
     for(var i = 0; i < obj.containerVersion.variable.length; i++) {
         console.log(obj.containerVersion.variable[i].variableId);
-        if(removeVariables.indexOf(obj.containerVersion.variable[i].variableId) >= 0) {
+        var vId = obj.containerVersion.variable[i].variableId;
+
+        if(keepVariablesID.indexOf(vId) == -1){
             obj.containerVersion.variable.splice(i,1);
             i--;
         }
     }
 
+    // erase folders
+    for(var i = 0; i < obj.containerVersion.folder.length; i++) {
+        console.log(obj.containerVersion.folder[i].folderId);
+        var fId = obj.containerVersion.folder[i].folderId;
 
+        if(keepFoldersID.indexOf(fId) == -1){
+            obj.containerVersion.folder.splice(i,1);
+            i--;
+        }
+    }
+
+    
     var newJSON = JSON.stringify(obj); // '{"name":"binchen"}'
     console.log(newJSON);
+    $("id").val(newJSON);
 }
 
 
