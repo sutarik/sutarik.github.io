@@ -55,7 +55,7 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     generateCheckboxes(tags,folders);
     // find variables in tags
     findTags(tags);
-    findTriggers(keepTags);
+    findTriggers(keepTags,triggers);
     findVariables(keepTags,keepTriggers);
     findFolders(keepTags,keepTriggers,keepVariables);
 });
@@ -64,7 +64,7 @@ function findTags(tags){
     keepTags = tags.slice();
 }
 
-function findTriggers(tags){
+function findTriggers(tags,triggers){
     for(var i=0;i<tags.length;i++){
         //cez firing a blocking triggers
         // popushovat do pola idcka
