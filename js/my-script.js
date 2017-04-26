@@ -57,7 +57,7 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     findTags(tags);
     findTriggers(keepTags,triggers);
     findVariables(keepTags,keepTriggers,variables);
-    findFolders(keepTags,keepTriggers,keepVariables);
+    findFolders(keepTags,keepTriggers,keepVariables,folders);
 });
 
 function findTags(tags){
@@ -179,7 +179,7 @@ function findVariables(tags,triggers,variables){
     // TODO also search in variables - custom javascript type
 }
 
-function findFolders(tags,triggers,variables){
+function findFolders(tags,triggers,variables,folders){
    // TODO cez idcka
    // hladat parentFolderId a storenut to do keepFolders
 
