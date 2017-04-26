@@ -3,7 +3,7 @@ var tagIds = {}, variableIds = {}, bVariableIds = {}, triggerIds = {}, folderIds
 var variableNames = {}, bVariableNames = {};
 var groupIds = [];
 
-var keepVariables = [], keepBuiltInVariables = [], keepTags = [], keepTriggers = [], keepFolders = [];
+var keepVariables = [], keepBuiltInVariables = [], keepTags = [], keepTriggers = [], keepTriggers2 = [], keepFolders = [];
 
 // in this object is stored which tags are necessary for cerain checkbox
 // the structure
@@ -72,6 +72,14 @@ function findTriggers(tags){
             var blockingTriggers = tags[i].blockingTriggerId;
             for(var j=0; j<blockingTriggers.length; j++){
                 keepTriggers.indexOf(blockingTriggers[j]) === -1 ? keepTriggers.push(blockingTriggers[j]) : console.log('already exists');
+
+                for(var k=0;k<triggers.length;k++){
+                    if(triggers[k].triggerId == blockingTriggers[j]){
+                        keepTriggers2.indexOf(triggers[k]) === -1 ? keepTriggers.push(triggers[k]) : console.log('already exists');
+                        break;
+                    }
+                }
+
             }
         }
 
@@ -79,6 +87,14 @@ function findTriggers(tags){
             var firingTriggers = tags[i].firingTriggerId;
             for(var j=0; j<firingTriggers.length; j++){
                 keepTriggers.indexOf(firingTriggers[j]) === -1 ? keepTriggers.push(firingTriggers[j]) : console.log('already exists');
+
+                for(var k=0;k<triggers.length;k++){
+                    if(triggers[k].triggerId == firingTriggers[j]){
+                        keepTriggers2.indexOf(triggers[k]) === -1 ? keepTriggers.push(triggers[k]) : console.log('already exists');
+                        break;
+                    }
+                }
+
             }
         }
     }
