@@ -89,7 +89,7 @@ function findTriggers(keepTags){
                 for(var k=0;k<triggers.length;k++){
                     if(triggers[k].triggerId == blockingTriggers[j]){
                         keepTriggers.indexOf(triggers[k]) === -1 ? keepTriggers.push(triggers[k]) : console.log('already exists');
-                        keepTriggersID.indexOf(triggers[k].triggerId) === -1 ? keepTriggersID.push(triggers[k].triggerId) : console.log('already exists');
+                     //   keepTriggersID.indexOf(triggers[k].triggerId) === -1 ? keepTriggersID.push(triggers[k].triggerId) : console.log('already exists');
                         break;
                     }
                 }
@@ -105,13 +105,17 @@ function findTriggers(keepTags){
                 for(var k=0;k<triggers.length;k++){
                     if(triggers[k].triggerId == firingTriggers[j]){
                         keepTriggers.indexOf(triggers[k]) === -1 ? keepTriggers.push(triggers[k]) : console.log('already exists');
-                        keepTriggersID.indexOf(triggers[k].triggerId) === -1 ? keepTriggersID.push(triggers[k].triggerId) : console.log('already exists');
+                    //    keepTriggersID.indexOf(triggers[k].triggerId) === -1 ? keepTriggersID.push(triggers[k].triggerId) : console.log('already exists');
                         break;
                     }
                 }
 
             }
         }
+    }
+
+    for(var i=0;i<keepTriggers.length;i++){
+        keepTriggersID.push(keepTriggers[i].triggerId);
     }
 
     findVariables(keepTags, keepTriggers);
@@ -138,7 +142,7 @@ function findVariables(keepTags,keepTriggers){
                    for(var k=0;k<variables.length;k++){
                         if(variables[k].variableId == variableNames[temp]){
                             keepVariables.indexOf(variables[k]) === -1 ? keepVariables.push(variables[k]) : console.log('already exists');
-                            keepVariablesID.indexOf(variables[k].variableId) === -1 ? keepVariablesID.push(variables[k].variableId) : console.log('already exists');
+                            //keepVariablesID.indexOf(variables[k].variableId) === -1 ? keepVariablesID.push(variables[k].variableId) : console.log('already exists');
                             break;
                         }
                     }
@@ -161,7 +165,7 @@ function findVariables(keepTags,keepTriggers){
                    for(var k=0;k<variables.length;k++){
                         if(variables[k].variableId == variableNames[temp]){
                             keepVariables.indexOf(variables[k]) === -1 ? keepVariables.push(variables[k]) : console.log('already exists');
-                            keepVariablesID.indexOf(variables[k].variableId) === -1 ? keepVariablesID.push(variables[k].variableId) : console.log('already exists');
+                            //keepVariablesID.indexOf(variables[k].variableId) === -1 ? keepVariablesID.push(variables[k].variableId) : console.log('already exists');
                             break;
                         }
                     }
@@ -188,7 +192,7 @@ function findVariables(keepTags,keepTriggers){
                        for(var k=0;k<variables.length;k++){
                             if(variables[k].variableId == variableNames[temp]){
                                 keepVariables.indexOf(variables[k]) === -1 ? keepVariables.push(variables[k]) : console.log('already exists');
-                                keepVariablesID.indexOf(variables[k].variableId) === -1 ? keepVariablesID.push(variables[k].variableId) : console.log('already exists');
+                                //keepVariablesID.indexOf(variables[k].variableId) === -1 ? keepVariablesID.push(variables[k].variableId) : console.log('already exists');
                                 break;
                             }
                         }
@@ -196,6 +200,10 @@ function findVariables(keepTags,keepTriggers){
                 }
             }
         }
+    }
+
+    for(var i=0;i<keepVariables.length;i++){
+        keepVariablesID.push(keepVariables[i].variableId);
     }
 
     console.log("po: " + keepVariables.length);
@@ -212,7 +220,6 @@ function findFolders(keepTags,keepTriggers,keepVariables){
         for(var j=0;j<folders.length;j++){
             if(folders[j].folderId == keepTags[i].parentFolderId){
                 keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
-                keepFoldersID.indexOf(folders[j].folderId) === -1 ? keepFoldersID.push(folders[j].folderID) : console.log('folder already exists');
             }
         }
    }
@@ -221,7 +228,6 @@ function findFolders(keepTags,keepTriggers,keepVariables){
         for(var j=0;j<folders.length;j++){
             if(folders[j].folderId == keepTriggers[i].parentFolderId){
                 keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
-                keepFoldersID.indexOf(folders[j].folderId) === -1 ? keepFoldersID.push(folders[j].folderID) : console.log('folder already exists');
             }
         }   
     }
@@ -230,9 +236,12 @@ function findFolders(keepTags,keepTriggers,keepVariables){
         for(var j=0;j<folders.length;j++){
             if(folders[j].folderId == keepVariables[i].parentFolderId){
                 keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
-                keepFoldersID.indexOf(folders[j].folderId) === -1 ? keepFoldersID.push(folders[j].folderID) : console.log('folder already exists');
             }
         }
+   }
+
+   for(var i=0;i<keepFolders.length;i++){
+        keepFoldersID.push(keepFolders[i].folderId);
    }
 
    modifyObject();
