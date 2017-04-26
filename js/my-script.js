@@ -218,7 +218,7 @@ function getGroups(){
     var checked = $("input:checked");
     
     for(var i=0; i<checked.length; i++){
-        groupIds.push(checked[i].name);
+        groupIds.push(checked[i].value);
     }
 
     console.log(groupIds);
