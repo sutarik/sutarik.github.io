@@ -121,7 +121,10 @@ function findVariables(keepTags,keepTriggers){
         var text = JSON.stringify(keepTags[i]);
         var result = text.match(reg);
         
+        console.log("tag: " + keeptags[i].tagId);
+
         if(result){
+            console.log("ano: " + keeptags[i].tagId);
             for(var j=0;j<result.length;j++){
                 var temp = result[j].replace(/{/g,'').replace(/}/g,'');
                 if(variableNames[temp] != undefined){
