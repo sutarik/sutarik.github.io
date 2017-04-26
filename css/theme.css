@@ -62,4 +62,9 @@
 
 .tag-group{
     float: left;
+    margin: 10px;
+}
+
+label{
+    margin-left: 5px;
 }

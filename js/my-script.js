@@ -402,6 +402,7 @@ function generateCheckboxes(){
             var br2 = document.createElement('br');
             var emptyLine = document.createElement('br');
 
+            l.className = "group-name";
             l.appendChild(document.createTextNode(folderIds[tags[i].parentFolderId]));
             g.id = tags[i].parentFolderId;
             g.className = "tag-group";
