@@ -77,3 +77,68 @@ button {
     height: 30px;
     width: 30px;
 }
+
+h3 {
+    color: #cd516e ;
+    font-weight: bold;
+}
+
+.tag-group {
+    background-color: #85C5D7 ;
+    padding: 0 20px 20px 20px;
+    margin-bottom: 10px;
+}
+
+body {
+    font-family: "Source Sans Pro",Tahoma,Geneva,sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #596273 ;
+}
+
+#getGroups {
+    color: #ffffff ;
+    background: #85C5D7 ;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgb(134, 197, 215);
+    letter-spacing: 1px;
+    font-weight: 400;
+    padding: 9px 19px;
+    display: inline-block;
+    font-size: 12px;
+    margin-top: 26px;
+    margin-right: 20px;
+    text-transform: uppercase;
+}
+
+#getGroups:hover {
+ color: #fff;
+    background: #fa7069 ;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgb(250, 112, 105);
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+}
+
+#finalJSON{
+    border: 3px solid #B1DDC6 ;    
+    margin-top: 0;
+}
