@@ -135,7 +135,7 @@ function findVariables(tags,triggers){
             }
         }
     }
-
+/*
     for(var i=0;i<variables.length;i++){
         // just if its custom javascript variable
         if(variables[i].type == "jsm"){
@@ -154,7 +154,7 @@ function findVariables(tags,triggers){
             }
         }
     }
-
+*/
     // TODO also search in variables - custom javascript type
 }
 
