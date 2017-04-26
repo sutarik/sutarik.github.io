@@ -4,6 +4,7 @@ var variableNames = {}, bVariableNames = {};
 var groupIds = [];
 
 var keepVariables = [], keepBuiltInVariables = [], keepTags = [], keepTriggers = [], keepTriggers2 = [], keepFolders = [];
+var tags, triggers, variables, folders, bVariables;
 
 // in this object is stored which tags are necessary for cerain checkbox
 // the structure
@@ -37,39 +38,49 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     console.log(json.containerVersion.tag); // this will show the info it in firebug console
     obj = json;
 
-    var tags = json.containerVersion.tag;
+    tags = json.containerVersion.tag;
    // var keepTags = json.containerVersion.tag;
-    var triggers = json.containerVersion.trigger;
-    var variables = json.containerVersion.variable;
-    var bVariables = json.containerVersion.builtInVariable;
-    var folders = json.containerVersion.folder;
+    triggers = json.containerVersion.trigger;
+    variables = json.containerVersion.variable;
+    bVariables = json.containerVersion.builtInVariable;
+    folders = json.containerVersion.folder;
 
     // store all tags, triggers and variables from container
-    getTagId(tags);
-    getTriggerId(triggers);
-    getVariableId(variables);
-    getBuiltInVariableId(bVariables);
-    getFolderId(folders);
+    getTagId();
+    getTriggerId();
+    getVariableId();
+    getBuiltInVariableId();
+    getFolderId();
 
     //generate checkboxes
-    generateCheckboxes(tags,folders);
+    generateCheckboxes();
     // find variables in tags
-    findTags(tags);
-    findTriggers(keepTags,triggers);
-    findVariables(keepTags,keepTriggers,variables);
-    findFolders(keepTags,keepTriggers,keepVariables,folders);
+    
+    //findTags();
+    //findTriggers(keepTags);
+    //findVariables(keepTags,keepTriggers);
+    //findFolders(keepTags,keepTriggers,keepVariables);
 });
 
-function findTags(tags){
-    keepTags = tags.slice();
+function findTags(){
+
+    for(var i =0;i<tags.length;i++){
+        for(var j=0;j<groupsIds.length;j++){
+            if(tags[i].tagId == groupsIds[j]){
+                keepTags.push(tags[i]);
+            }
+        }
+    }
+   // keepTags = tags.slice();
+   findTriggers(keepTags);
 }
 
-function findTriggers(tags,triggers){
-    for(var i=0;i<tags.length;i++){
+function findTriggers(keepTags){
+    for(var i=0;i<keepTags.length;i++){
         //cez firing a blocking triggers
         // popushovat do pola idcka
-        if(tags[i].blockingTriggerId){
-            var blockingTriggers = tags[i].blockingTriggerId;
+        if(keepTags[i].blockingTriggerId){
+            var blockingTriggers = keepTags[i].blockingTriggerId;
             for(var j=0; j<blockingTriggers.length; j++){
              //   keepTriggers.indexOf(blockingTriggers[j]) === -1 ? keepTriggers.push(blockingTriggers[j]) : console.log('already exists');
 
@@ -83,8 +94,8 @@ function findTriggers(tags,triggers){
             }
         }
 
-        if(tags[i].firingTriggerId){
-            var firingTriggers = tags[i].firingTriggerId;
+        if(keepTags[i].firingTriggerId){
+            var firingTriggers = keepTags[i].firingTriggerId;
             for(var j=0; j<firingTriggers.length; j++){
                // keepTriggers.indexOf(firingTriggers[j]) === -1 ? keepTriggers.push(firingTriggers[j]) : console.log('already exists');
 
@@ -98,14 +109,16 @@ function findTriggers(tags,triggers){
             }
         }
     }
+
+    findVariables(keepTags, keepTriggers);
 }
 
 // same function for triggers
-function findVariables(tags,triggers,variables){
+function findVariables(keepTags,keepTriggers){
    // TODO nepojdem cez vsetky tagy ale cez vsetky oznacene tagy
    var reg = /{{[^}]*}}/g;
-   for(var i=0;i<tags.length;i++){
-        var text = JSON.stringify(tags[i]);
+   for(var i=0;i<keepTags.length;i++){
+        var text = JSON.stringify(keepTags[i]);
         var result = text.match(reg);
         
         if(result){
@@ -126,8 +139,8 @@ function findVariables(tags,triggers,variables){
         }
     }
 
-    for(var i=0;i<triggers.length;i++){
-        var text = JSON.stringify(triggers[i]);
+    for(var i=0;i<keepTriggers.length;i++){
+        var text = JSON.stringify(keepTriggers[i]);
         var result = text.match(reg);
         
         if(result){
@@ -177,31 +190,33 @@ function findVariables(tags,triggers,variables){
 
     console.log("po: " + keepVariables.length);
     // TODO also search in variables - custom javascript type
+
+    findFolders(keepTags, keepTriggers, keepVariables);
 }
 
-function findFolders(tags,triggers,variables,folders){
+function findFolders(keepTags,keepTriggers,keepVariables){
    // TODO cez idcka
    // hladat parentFolderId a storenut to do keepFolders
 
-   for(var i=0;i<tags.length;i++){
+   for(var i=0;i<keepTags.length;i++){
         for(var j=0;j<folders.length;j++){
-            if(folders[j].folderId == tags[i].parentFolderId){
+            if(folders[j].folderId == keepTags[i].parentFolderId){
                 keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
             }
         }
    }
 
-   for(var i=0;i<triggers.length;i++){
+   for(var i=0;i<keepTriggers.length;i++){
         for(var j=0;j<folders.length;j++){
-            if(folders[j].folderId == triggers[i].parentFolderId){
+            if(folders[j].folderId == keepTriggers[i].parentFolderId){
                 keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
             }
         }   
     }
 
-   for(var i=0;i<variables.length;i++){
+   for(var i=0;i<keepVariables.length;i++){
         for(var j=0;j<folders.length;j++){
-            if(folders[j].folderId == variables[i].parentFolderId){
+            if(folders[j].folderId == keepVariables[i].parentFolderId){
                 keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
             }
         }
@@ -222,6 +237,8 @@ function getGroups(){
     }
 
     console.log(groupIds);
+
+    findTags(groupId);
 }
 
 function getTagId(tags){
