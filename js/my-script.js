@@ -147,10 +147,12 @@ function findVariables(tags,triggers,variables){
             }
         }
     }
-/*
-    for(var i=0;i<variables.length;i++){
+    
+    console.log("pred: " + keepVariables.length);
+
+    for(var i=0;i<keepVariables.length;i++){
         // just if its custom javascript variable
-        if(variables[i].type == "jsm"){
+        if(keepVariables[i].type == "jsm"){
             var text = JSON.stringify(variables[i]);
             var result = text.match(reg);
             
@@ -166,7 +168,8 @@ function findVariables(tags,triggers,variables){
             }
         }
     }
-*/
+
+    console.log("po: " + keepVariables.length);
     // TODO also search in variables - custom javascript type
 }
 
