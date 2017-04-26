@@ -50,7 +50,7 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
    // getTriggerId();
    // getVariableId();
    // getBuiltInVariableId();
-  //  getFolderId();
+    getFolderId();
 
     //generate checkboxes
     generateCheckboxes();
