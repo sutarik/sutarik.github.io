@@ -62,11 +62,11 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     //findFolders(keepTags,keepTriggers,keepVariables);
 });
 
-function findTags(){
+function findTags(groupIds){
 
     for(var i =0;i<tags.length;i++){
-        for(var j=0;j<groupsIds.length;j++){
-            if(tags[i].tagId == groupsIds[j]){
+        for(var j=0;j<groupIds.length;j++){
+            if(tags[i].tagId == groupIds[j]){
                 keepTags.push(tags[i]);
             }
         }
