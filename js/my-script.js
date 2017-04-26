@@ -241,7 +241,7 @@ function getGroups(){
     findTags(groupId);
 }
 
-function getTagId(tags){
+function getTagId(){
     // iterate through array with tags and store their Id's
     for(var i=0;i<tags.length;i++){
         var name = tags[i].name;
@@ -250,7 +250,7 @@ function getTagId(tags){
     }
 }
 
-function getTriggerId(triggers){
+function getTriggerId(){
     for(var i=0;i<triggers.length;i++){
         var name = triggers[i].name;
         var id = triggers[i].triggerId;
@@ -258,7 +258,7 @@ function getTriggerId(triggers){
     }
 }
 
-function getVariableId(variables){
+function getVariableId(){
     for(var i=0;i<variables.length;i++){
         var name = variables[i].name;
         var id = variables[i].variableId;
@@ -267,7 +267,7 @@ function getVariableId(variables){
     }
 }
 
-function getBuiltInVariableId(bVariables){
+function getBuiltInVariableId(){
     for(var i=0;i<bVariables.length;i++){
         var name = bVariables[i].name;
         var id = bVariables[i].variableId;
@@ -276,7 +276,7 @@ function getBuiltInVariableId(bVariables){
     }
 }
 
-function getFolderId(folders){
+function getFolderId(){
     for(var i=0;i<folders.length;i++){
         var name = folders[i].name;
         var id = folders[i].folderId;
