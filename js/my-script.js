@@ -117,7 +117,7 @@ function findVariables(tags,triggers,variables){
                    
                    for(var k=0;k<variables.length;k++){
                         if(variables[k].variableId == variableNames[temp]){
-                            keepVariables.indexOf(variable[k]) === -1 ? keepVariabless.push(variables[k]) : console.log('already exists');
+                            keepVariables.indexOf(variables[k]) === -1 ? keepVariabless.push(variables[k]) : console.log('already exists');
                             break;
                         }
                     }
