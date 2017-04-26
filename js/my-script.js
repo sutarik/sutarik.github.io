@@ -120,6 +120,25 @@ function findVariables(tags,triggers){
         }
     }
 
+    for(var i=0;i<variables.length;i++){
+        // just if its custom javascript variable
+        if(variables[i].type == "jsm"){
+            var text = JSON.stringify(variables[i]);
+            var result = text.match(reg);
+            
+            if(result){
+                for(var j=0;j<result.length;j++){
+                    var temp = result[j].replace(/{/g,'').replace(/}/g,'');
+                    if(variableNames[temp] == undefined){
+                        keepBuiltInVariables.indexOf(temp) === -1 ? keepBuiltInVariables.push(temp) : console.log('already exists');
+                    }else{
+                        keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log('already exists');
+                    }
+                }
+            }
+        }
+    }
+
     // TODO also search in variables - custom javascript type
 }
 
