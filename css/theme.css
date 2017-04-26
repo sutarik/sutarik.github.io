@@ -54,3 +54,7 @@
     background-position: bottom right;
     background-repeat: no-repeat;
 }
+
+#checkboxes {
+    float: left;
+}
