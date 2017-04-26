@@ -119,6 +119,8 @@ function findVariables(tags,triggers){
             }
         }
     }
+
+    // TODO also search in variables - custom javascript type
 }
 
 function findFolders(tags,triggers,variables){
@@ -145,7 +147,7 @@ function findFolders(tags,triggers,variables){
 
 }
 
-function delete(tags, triggers, variables, folders){
+function deleteUnchecked(tags, triggers, variables, folders){
 
 }
 
