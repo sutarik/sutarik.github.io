@@ -46,11 +46,11 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     folders = json.containerVersion.folder;
 
     // store all tags, triggers and variables from container
-    getTagId();
-    getTriggerId();
-    getVariableId();
-    getBuiltInVariableId();
-    getFolderId();
+   // getTagId();
+   // getTriggerId();
+   // getVariableId();
+   // getBuiltInVariableId();
+  //  getFolderId();
 
     //generate checkboxes
     generateCheckboxes();
@@ -238,7 +238,7 @@ function getGroups(){
 
     console.log(groupIds);
 
-    findTags(groupId);
+    findTags(groupIds);
 }
 
 function getTagId(){
