@@ -247,10 +247,6 @@ function findFolders(keepTags,keepTriggers,keepVariables){
    modifyObject();
 }
 
-function deleteUnchecked(tags, triggers, variables, folders){
-
-}
-
 function getGroups(){
     groupIds = [];
     var checked = $("input:checked");
@@ -408,6 +404,7 @@ function generateCheckboxes(){
 
             l.appendChild(document.createTextNode(folderIds[tags[i].parentFolderId]));
             g.id = tags[i].parentFolderId;
+            g.class = "tag-group";
 
             g.appendChild(emptyLine);
             g.appendChild(l);
