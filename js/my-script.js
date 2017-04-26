@@ -56,7 +56,7 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     // find variables in tags
     findTags(tags);
     findTriggers(keepTags,triggers);
-    findVariables(keepTags,keepTriggers);
+    findVariables(keepTags,keepTriggers,variables);
     findFolders(keepTags,keepTriggers,keepVariables);
 });
 
@@ -71,11 +71,11 @@ function findTriggers(tags,triggers){
         if(tags[i].blockingTriggerId){
             var blockingTriggers = tags[i].blockingTriggerId;
             for(var j=0; j<blockingTriggers.length; j++){
-                keepTriggers.indexOf(blockingTriggers[j]) === -1 ? keepTriggers.push(blockingTriggers[j]) : console.log('already exists');
+             //   keepTriggers.indexOf(blockingTriggers[j]) === -1 ? keepTriggers.push(blockingTriggers[j]) : console.log('already exists');
 
                 for(var k=0;k<triggers.length;k++){
                     if(triggers[k].triggerId == blockingTriggers[j]){
-                        keepTriggers2.indexOf(triggers[k]) === -1 ? keepTriggers2.push(triggers[k]) : console.log('already exists');
+                        keepTriggers.indexOf(triggers[k]) === -1 ? keepTriggers.push(triggers[k]) : console.log('already exists');
                         break;
                     }
                 }
@@ -86,11 +86,11 @@ function findTriggers(tags,triggers){
         if(tags[i].firingTriggerId){
             var firingTriggers = tags[i].firingTriggerId;
             for(var j=0; j<firingTriggers.length; j++){
-                keepTriggers.indexOf(firingTriggers[j]) === -1 ? keepTriggers.push(firingTriggers[j]) : console.log('already exists');
+               // keepTriggers.indexOf(firingTriggers[j]) === -1 ? keepTriggers.push(firingTriggers[j]) : console.log('already exists');
 
                 for(var k=0;k<triggers.length;k++){
                     if(triggers[k].triggerId == firingTriggers[j]){
-                        keepTriggers2.indexOf(triggers[k]) === -1 ? keepTriggers2.push(triggers[k]) : console.log('already exists');
+                        keepTriggers.indexOf(triggers[k]) === -1 ? keepTriggers.push(triggers[k]) : console.log('already exists');
                         break;
                     }
                 }
@@ -101,7 +101,7 @@ function findTriggers(tags,triggers){
 }
 
 // same function for triggers
-function findVariables(tags,triggers){
+function findVariables(tags,triggers,variables){
    // TODO nepojdem cez vsetky tagy ale cez vsetky oznacene tagy
    var reg = /{{[^}]*}}/g;
    for(var i=0;i<tags.length;i++){
@@ -111,10 +111,16 @@ function findVariables(tags,triggers){
         if(result){
             for(var j=0;j<result.length;j++){
                 var temp = result[j].replace(/{/g,'').replace(/}/g,'');
-                if(variableNames[temp] == undefined){
-                    keepBuiltInVariables.indexOf(temp) === -1 ? keepBuiltInVariables.push(temp) : console.log('already exists');
-                }else{
-                    keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log('already exists');
+                if(variableNames[temp] != undefined){
+                   // keepBuiltInVariables.indexOf(temp) === -1 ? keepBuiltInVariables.push(temp) : console.log('already exists');
+                   // keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log('already exists');
+                   
+                   for(var k=0;k<variables.length;k++){
+                        if(variables[k].variableId == variableNames[temp]){
+                            keepVariables.indexOf(variable[k]) === -1 ? keepVariabless.push(variables[k]) : console.log('already exists');
+                            break;
+                        }
+                    }
                 }
             }
         }
@@ -127,10 +133,16 @@ function findVariables(tags,triggers){
         if(result){
             for(var j=0;j<result.length;j++){
                 var temp = result[j].replace(/{/g,'').replace(/}/g,'');
-                if(variableNames[temp] == undefined){
-                    keepBuiltInVariables.indexOf(temp) === -1 ? keepBuiltInVariables.push(temp) : console.log('already exists');
-                }else{
-                    keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log('already exists');
+                if(variableNames[temp] != undefined){
+                   // keepBuiltInVariables.indexOf(temp) === -1 ? keepBuiltInVariables.push(temp) : console.log('already exists');
+                   // keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log('already exists');
+                   
+                   for(var k=0;k<variables.length;k++){
+                        if(variables[k].variableId == variableNames[temp]){
+                            keepVariables.indexOf(variable[k]) === -1 ? keepVariabless.push(variables[k]) : console.log('already exists');
+                            break;
+                        }
+                    }
                 }
             }
         }
