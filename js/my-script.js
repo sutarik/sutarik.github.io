@@ -356,7 +356,7 @@ function modifyObject(){
     
     var newJSON = JSON.stringify(obj); // '{"name":"binchen"}'
     console.log(newJSON);
-    $("finalJSON").val(newJSON);
+    $("#finalJSON").val(newJSON);
 }
 
 
