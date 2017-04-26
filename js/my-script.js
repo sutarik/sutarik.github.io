@@ -159,10 +159,16 @@ function findVariables(tags,triggers,variables){
             if(result){
                 for(var j=0;j<result.length;j++){
                     var temp = result[j].replace(/{/g,'').replace(/}/g,'');
-                    if(variableNames[temp] == undefined){
-                        keepBuiltInVariables.indexOf(temp) === -1 ? keepBuiltInVariables.push(temp) : console.log('already exists');
-                    }else{
-                        keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log('already exists');
+                    if(variableNames[temp] != undefined){
+                       // keepBuiltInVariables.indexOf(temp) === -1 ? keepBuiltInVariables.push(temp) : console.log('already exists');
+                       // keepVariables.indexOf(variableNames[temp]) === -1 ? keepVariables.push(variableNames[temp]) : console.log('already exists');
+    
+                       for(var k=0;k<variables.length;k++){
+                            if(variables[k].variableId == variableNames[temp]){
+                                keepVariables.indexOf(variables[k]) === -1 ? keepVariables.push(variables[k]) : console.log('already exists');
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -178,15 +184,27 @@ function findFolders(tags,triggers,variables){
    // hladat parentFolderId a storenut to do keepFolders
 
    for(var i=0;i<tags.length;i++){
-        keepFolders.indexOf(tags[i].parentFolderId) === -1 ? keepFolders.push(tags[i].parentFolderId) : console.log('folder already exists')
+        for(var j=0;j<folders.length;j++){
+            if(folders[j].folderId == tags[i].parentFodlerId){
+                keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
+            }
+        }
    }
 
    for(var i=0;i<triggers.length;i++){
-        keepFolders.indexOf(triggers[i].parentFolderId) === -1 ? keepFolders.push(triggers[i].parentFolderId) : console.log('folder already exists');
-   }
+        for(var j=0;j<folders.length;j++){
+            if(folders[j].folderId == triggers[i].parentFodlerId){
+                keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
+            }
+        }   
+    }
 
    for(var i=0;i<variables.length;i++){
-        keepFolders.indexOf(variables[i].parentFolderId) === -1 ? keepFolders.push(variables[i].parentFolderId) : console.log('folder already exists');
+        for(var j=0;j<folders.length;j++){
+            if(folders[j].folderId == variables[i].parentFodlerId){
+                keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
+            }
+        }
    }
 
 }
