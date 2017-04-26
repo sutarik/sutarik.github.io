@@ -58,11 +58,7 @@
 #checkboxes {
     float: left;
     width: 50%;
-}
-
-.tag-group{
-    float: left;
-    margin: 10px;
+    margin-left: 25px;
 }
 
 label{
@@ -71,4 +67,8 @@ label{
 
 .tag-label{
     font-weight: normal;
+}
+
+button {
+    margin-top: 10px;
 }
