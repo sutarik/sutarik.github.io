@@ -185,7 +185,7 @@ function findFolders(tags,triggers,variables,folders){
 
    for(var i=0;i<tags.length;i++){
         for(var j=0;j<folders.length;j++){
-            if(folders[j].folderId == tags[i].parentFodlerId){
+            if(folders[j].folderId == tags[i].parentFolderId){
                 keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
             }
         }
@@ -193,7 +193,7 @@ function findFolders(tags,triggers,variables,folders){
 
    for(var i=0;i<triggers.length;i++){
         for(var j=0;j<folders.length;j++){
-            if(folders[j].folderId == triggers[i].parentFodlerId){
+            if(folders[j].folderId == triggers[i].parentFolderId){
                 keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
             }
         }   
@@ -201,7 +201,7 @@ function findFolders(tags,triggers,variables,folders){
 
    for(var i=0;i<variables.length;i++){
         for(var j=0;j<folders.length;j++){
-            if(folders[j].folderId == variables[i].parentFodlerId){
+            if(folders[j].folderId == variables[i].parentFolderId){
                 keepFolders.indexOf(folders[j]) === -1 ? keepFolders.push(folders[j]) : console.log('folder already exists');
             }
         }
