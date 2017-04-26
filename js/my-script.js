@@ -323,7 +323,7 @@ function modifyObject(){
 }
 
 
-function generateCheckboxes(tags, folders){
+function generateCheckboxes(){
     // TO DO
     // cez vsetky tagy, vytvorit checkbox
     // ked ho budem pridavat do body tak pozriet ci existuje taka grupa / based on folder
