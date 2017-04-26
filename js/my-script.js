@@ -48,7 +48,7 @@ $.getJSON("./data/boilerplate-new.json", function(json) {
     // store all tags, triggers and variables from container
    // getTagId();
    // getTriggerId();
-   // getVariableId();
+    getVariableId();
    // getBuiltInVariableId();
     getFolderId();
 
