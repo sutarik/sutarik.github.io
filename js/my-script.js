@@ -305,52 +305,54 @@ function getFolderId(){
 
 function modifyObject(){
 
+    var modified = obj;
+
     // erase tags
-    for(var i = 0; i < obj.containerVersion.tag.length; i++) {
-        console.log(obj.containerVersion.tag[i].tagId);
-        var tId = obj.containerVersion.tag[i].tagId;
+    for(var i = 0; i < modified.containerVersion.tag.length; i++) {
+        console.log(modified.containerVersion.tag[i].tagId);
+        var tId = modified.containerVersion.tag[i].tagId;
 
         if(keepTagsID.indexOf(tId) == -1){
-            obj.containerVersion.tag.splice(i,1);
+            modified.containerVersion.tag.splice(i,1);
             i--;
         }
     }
 
     // erase triggers
-    for(var i = 0; i < obj.containerVersion.trigger.length; i++) {
-        console.log(obj.containerVersion.trigger[i].triggerId);
-        var trId = obj.containerVersion.trigger[i].triggerId;
+    for(var i = 0; i < modified.containerVersion.trigger.length; i++) {
+        console.log(modified.containerVersion.trigger[i].triggerId);
+        var trId = modified.containerVersion.trigger[i].triggerId;
 
         if(keepTriggersID.indexOf(trId) == -1){
-            obj.containerVersion.trigger.splice(i,1);
+            modified.containerVersion.trigger.splice(i,1);
             i--;
         }
     }
 
     // erase variables
-    for(var i = 0; i < obj.containerVersion.variable.length; i++) {
-        console.log(obj.containerVersion.variable[i].variableId);
-        var vId = obj.containerVersion.variable[i].variableId;
+    for(var i = 0; i < modified.containerVersion.variable.length; i++) {
+        console.log(modified.containerVersion.variable[i].variableId);
+        var vId = modified.containerVersion.variable[i].variableId;
 
         if(keepVariablesID.indexOf(vId) == -1){
-            obj.containerVersion.variable.splice(i,1);
+            modified.containerVersion.variable.splice(i,1);
             i--;
         }
     }
 
     // erase folders
-    for(var i = 0; i < obj.containerVersion.folder.length; i++) {
-        console.log(obj.containerVersion.folder[i].folderId);
-        var fId = obj.containerVersion.folder[i].folderId;
+    for(var i = 0; i < modified.containerVersion.folder.length; i++) {
+        console.log(modified.containerVersion.folder[i].folderId);
+        var fId = modified.containerVersion.folder[i].folderId;
 
         if(keepFoldersID.indexOf(fId) == -1){
-            obj.containerVersion.folder.splice(i,1);
+            modified.containerVersion.folder.splice(i,1);
             i--;
         }
     }
 
     
-    var newJSON = JSON.stringify(obj); // '{"name":"binchen"}'
+    var newJSON = JSON.stringify(modified); // '{"name":"binchen"}'
     console.log(newJSON);
     $("#finalJSON").val(newJSON);
 
