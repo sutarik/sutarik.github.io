@@ -75,7 +75,7 @@ function findTriggers(tags,triggers){
 
                 for(var k=0;k<triggers.length;k++){
                     if(triggers[k].triggerId == blockingTriggers[j]){
-                        keepTriggers2.indexOf(triggers[k]) === -1 ? keepTriggers.push(triggers[k]) : console.log('already exists');
+                        keepTriggers2.indexOf(triggers[k]) === -1 ? keepTriggers2.push(triggers[k]) : console.log('already exists');
                         break;
                     }
                 }
@@ -90,7 +90,7 @@ function findTriggers(tags,triggers){
 
                 for(var k=0;k<triggers.length;k++){
                     if(triggers[k].triggerId == firingTriggers[j]){
-                        keepTriggers2.indexOf(triggers[k]) === -1 ? keepTriggers.push(triggers[k]) : console.log('already exists');
+                        keepTriggers2.indexOf(triggers[k]) === -1 ? keepTriggers2.push(triggers[k]) : console.log('already exists');
                         break;
                     }
                 }
