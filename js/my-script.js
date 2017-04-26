@@ -386,6 +386,7 @@ function generateCheckboxes(){
         checkbox.id = tags[i].name.replace(/ /g,'');
 
         var label = document.createElement('label');
+        label.className = "tag-label";
         label.htmlFor = tags[i].name.replace(/ /g,'');
         label.appendChild(document.createTextNode(tags[i].name));
 
