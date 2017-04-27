@@ -383,7 +383,7 @@ function generateCheckboxes(){
     for(var i=0;i<tags.length;i++){
         var checkbox = document.createElement('input');
         checkbox.type = "checkbox";
-        checkbox.name = tags[i].name.replace(/ /g,'');
+        checkbox.name = "folder-" + tags[i].parentFolderId;
         checkbox.value = tags[i].tagId;
         checkbox.id = tags[i].name.replace(/ /g,'');
         checkbox.className = "tags";
@@ -396,11 +396,22 @@ function generateCheckboxes(){
         var br = document.createElement('br');
         var group = document.getElementById(tags[i].parentFolderId);
         
-        if(group){
+        if(group){           
             group.appendChild(checkbox);
             group.appendChild(label);
             group.appendChild(br);
         }else{
+            var c = document.createElement('input');
+            c.type = "checkbox";
+            c.name = "folder-" + tags[i].parentFolderId;
+
+            c.onclick = function(this) {
+                checkboxes = document.getElementsByName(this.name);
+                for(var i=0, n=checkboxes.length;i<n;i++) {
+                   checkboxes[i].checked = source.checked;
+                }
+            }
+
             var g = document.createElement('div');
             var l = document.createElement('label');
             var br2 = document.createElement('br');
@@ -424,7 +435,7 @@ function generateCheckboxes(){
 
 }
 
-function toggle(source) {
+function selectAll(source) {
   checkboxes = document.getElementsByTagName('input');
   for(var i=0, n=checkboxes.length;i<n;i++) {
     checkboxes[i].checked = source.checked;
