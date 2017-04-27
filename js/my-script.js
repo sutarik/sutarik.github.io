@@ -408,7 +408,7 @@ function generateCheckboxes(){
             c.onclick = function() {
                 checkboxes = document.getElementsByName(c.name);
                 for(var i=0, n=checkboxes.length;i<n;i++) {
-                   checkboxes[i].checked = source.checked;
+                   checkboxes[i].checked = c.checked;
                 }
             }
 
