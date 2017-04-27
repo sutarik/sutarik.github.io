@@ -386,6 +386,7 @@ function generateCheckboxes(){
         checkbox.name = tags[i].name.replace(/ /g,'');
         checkbox.value = tags[i].tagId;
         checkbox.id = tags[i].name.replace(/ /g,'');
+        checkbox.className = "tags";
 
         var label = document.createElement('label');
         label.className = "tag-label";
@@ -426,12 +427,8 @@ function generateCheckboxes(){
 $('#select-all').click(function(event) {   
     if(this.checked) {
         // Iterate each checkbox
-        $('input:checkbox').each(function() {
+        $('.tags').each(function() {
             this.checked = true;                        
-        });
-    }else{
-        $('input:checkbox').each(function() {
-            this.checked = false;                        
         });
     }
 });
