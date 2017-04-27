@@ -423,6 +423,7 @@ function generateCheckboxes(){
             g.className = "tag-group";
 
             g.appendChild(emptyLine);
+            g.appendChild(c);
             g.appendChild(l);
             g.appendChild(br);
             g.appendChild(checkbox);
