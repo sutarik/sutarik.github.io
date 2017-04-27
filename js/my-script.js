@@ -405,8 +405,8 @@ function generateCheckboxes(){
             c.type = "checkbox";
             c.name = "folder-" + tags[i].parentFolderId;
 
-            c.onclick = function(this) {
-                checkboxes = document.getElementsByName(this.name);
+            c.onclick = function() {
+                checkboxes = document.getElementsByName(c.name);
                 for(var i=0, n=checkboxes.length;i<n;i++) {
                    checkboxes[i].checked = source.checked;
                 }
