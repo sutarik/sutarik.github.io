@@ -424,11 +424,9 @@ function generateCheckboxes(){
 
 }
 
-$('#select-all').click(function(event) {   
-    if(this.checked) {
-        // Iterate each checkbox
-        $('.tags').each(function() {
-            this.checked = true;                        
-        });
-    }
-});
+function toggle(source) {
+  checkboxes = document.getElementsByName('AW-ConversionPixel');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
