@@ -401,17 +401,6 @@ function generateCheckboxes(){
             group.appendChild(label);
             group.appendChild(br);
         }else{
-            var c = document.createElement('input');
-            c.type = "checkbox";
-            c.name = "folder-" + tags[i].parentFolderId;
-
-            c.onclick = function() {
-                checkboxes = document.getElementsByName(c.name);
-                for(var i=0, n=checkboxes.length;i<n;i++) {
-                   checkboxes[i].checked = c.checked;
-                }
-            }
-
             var g = document.createElement('div');
             var l = document.createElement('label');
             var br2 = document.createElement('br');
@@ -423,7 +412,6 @@ function generateCheckboxes(){
             g.className = "tag-group";
 
             g.appendChild(emptyLine);
-            g.appendChild(c);
             g.appendChild(l);
             g.appendChild(br);
             g.appendChild(checkbox);
