@@ -425,7 +425,7 @@ function generateCheckboxes(){
 }
 
 function toggle(source) {
-  checkboxes = document.getElementsByName('AW-ConversionPixel');
+  checkboxes = document.getElementsByTagName('input');
   for(var i=0, n=checkboxes.length;i<n;i++) {
     checkboxes[i].checked = source.checked;
   }
