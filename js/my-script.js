@@ -354,6 +354,8 @@ function modifyObject(){
     
     var newJSON = JSON.stringify(modified); // '{"name":"binchen"}'
     console.log(newJSON);
+    
+    $("#finalJSON").val("");
     $("#finalJSON").val(newJSON);
 
     //create new file
