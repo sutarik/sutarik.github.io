@@ -5,6 +5,7 @@ var groupIds = [];
 
 var keepVariables = [], keepBuiltInVariables = [], keepTags = [], keepTriggers = [], keepFolders = [];
 var keepVariablesID = [], keepBuiltInVariablesID = [], keepTagsID = [], keepTriggersID = [], keepFoldersID = [];
+var constantVariables = [];
 var tags, triggers, variables, folders, bVariables;
 
 // in this object is stored which tags are necessary for cerain checkbox
@@ -204,6 +205,9 @@ function findVariables(keepTags,keepTriggers){
 
     for(var i=0;i<keepVariables.length;i++){
         keepVariablesID.push(keepVariables[i].variableId);
+        if(keepVariables[i].type == 'c'){
+            constantVariables.push(keepVariables[i]);
+        }
     }
 
     console.log("po: " + keepVariables.length);
