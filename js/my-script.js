@@ -359,10 +359,10 @@ function modifyObject(){
 
     
     var newJSON = JSON.stringify(modified); // '{"name":"binchen"}'
-    console.log(newJSON);
+  //  console.log(newJSON);
     
-    $("#finalJSON").val("");
-    $("#finalJSON").val(newJSON);
+   // $("#finalJSON").val("");
+   // $("#finalJSON").val(newJSON);
 
     //create new file
     var textFile = null;
