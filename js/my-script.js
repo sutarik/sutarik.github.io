@@ -393,6 +393,8 @@ function generateConstantCheckboxes(){
         var label = document.createElement('label');
         label.htmlFor = constantVariables[i].name.replace(/ /g,'');
         label.appendChild(document.createTextNode(constantVariables[i].name));
+
+        container.appendChild(tField);
     }
 }
 
