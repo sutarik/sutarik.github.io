@@ -136,6 +136,11 @@ body {
     text-decoration-line: none;
     text-decoration-style: initial;
     text-decoration-color: initial;
+    float: left;
+}
+
+#downloadLink{
+    float: left;
 }
 
 #finalJSON{
