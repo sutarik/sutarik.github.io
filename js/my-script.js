@@ -384,17 +384,21 @@ function modifyObject(){
 function generateConstantCheckboxes(){
     var container = document.getElementById('constants');
 
-    for(var i=0;i<constantVariables,length;i++){
+    for(var i=0;i<constantVariables.length;i++){
         var tField = document.createElement('input');
         tField.type = 'text';
         tField.id = constantVariables[i].name.replace(/ /g,'');
-        tField.val = constantVariables[i].parameter[0].value;
+        tField.value = constantVariables[i].parameter[0].value;
 
-        var label = document.createElement('label');
-        label.htmlFor = constantVariables[i].name.replace(/ /g,'');
-        label.appendChild(document.createTextNode(constantVariables[i].name));
+        var label = document.createElement('div');
+        label.innerHTML = constantVariables[i].name;
+      //  label.htmlFor = constantVariables[i].name.replace(/ /g,'');
+      //  label.appendChild(document.createTextNode(constantVariables[i].name));
 
+        container.appendChild(document.createElement('br'));
+        container.appendChild(label);
         container.appendChild(tField);
+        container.appendChild(document.createElement('br'));
     }
 }
 
