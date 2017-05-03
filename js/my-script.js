@@ -210,8 +210,10 @@ function findVariables(keepTags,keepTriggers){
         }
     }
 
-    console.log("po: " + keepVariables.length);
+    //console.log("po: " + keepVariables.length);
     // TODO also search in variables - custom javascript type
+
+    generateConstantCheckboxes();
 
     findFolders(keepTags, keepTriggers, keepVariables);
 }
@@ -377,6 +379,21 @@ function modifyObject(){
     var link = document.getElementById('downloadlink');
     link.href = textFile;
     link.style.display = 'block';
+}
+
+function generateConstantCheckboxes(){
+    var container = document.getElementById('constants');
+
+    for(var i=0;i<constantVariables,length;i++){
+        var tField = document.createElement('input');
+        tField.type = 'text';
+        tField.id = constantVariables[i].name.replace(/ /g,'');
+        tField.val = constantVariables[i].parameter[0].value;
+
+        var label = document.createElement('label');
+        label.htmlFor = constantVariables[i].name.replace(/ /g,'');
+        label.appendChild(document.createTextNode(constantVariables[i].name));
+    }
 }
 
 
