@@ -117,6 +117,7 @@ body {
     margin-top: 26px;
     margin-right: 20px;
     text-transform: uppercase;
+    float: left;
 }
 
 #getGroups:hover {
@@ -136,10 +137,9 @@ body {
     text-decoration-line: none;
     text-decoration-style: initial;
     text-decoration-color: initial;
-    float: left;
 }
 
-#downloadLink{
+#downloadlink{
     float: left;
 }
 
