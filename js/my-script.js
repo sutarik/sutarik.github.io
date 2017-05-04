@@ -478,10 +478,3 @@ function selectAll(source) {
     checkboxes[i].checked = source.checked;
   }
 }
-
-$('#open-button').click(function() {
-    var input = $(document.createElement('input')); 
-    input.attr("type", "file");
-    input.trigger('click');
-    return false;
-});
