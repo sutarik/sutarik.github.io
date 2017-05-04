@@ -55,12 +55,6 @@
     background-repeat: no-repeat;
 }
 
-#checkboxes {
-    float: left;
-    width: 50%;
-    margin-left: 25px;
-}
-
 label{
     margin-left: 5px;
 }
@@ -137,10 +131,6 @@ body {
     text-decoration-line: none;
     text-decoration-style: initial;
     text-decoration-color: initial;
-}
-
-#downloadlink{
-    float: left;
 }
 
 #finalJSON{
