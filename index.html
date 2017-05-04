@@ -8,23 +8,22 @@
 		<script src="js/my-script.js"></script>
 	</head>
 	<body>
+
+
     	<a class="navbar-brand" href="https://dase-analytics.com/blog"><img src="https://dase-analytics.com/blog/wp-content/themes/visibility/images/logo2.png" alt="DASE" id="dase-logo"></a><h3 class="text-center"><img id="pete" src="./data/pete.jpg">'s Custom Boilerplate Tool</h3>
     	<hr>
 
-		<div class="container" id="checkboxes">
-			<input type="checkbox" id="select-all" onclick="selectAll(this)">Select All <br/>
-		</div>
-
-		<div>
-			<div id="constants"></div>
-		</div>
-
-		<div>
-			<button id="getGroups" onclick="getGroups()" class="btn">Generate JSON</button>
+    	<div class="row">
+		  <div class="col-md-4" id="checkboxes">
+		  	<input type="checkbox" id="select-all" onclick="selectAll(this)">Select All <br/>
+		  </div>
+		  <div class="col-md-4" id="constants">
+		  </div>
+		  <div class="col-md-4">
+		  	<button id="getGroups" onclick="getGroups()" class="btn">Generate JSON</button>
 			<a download="custom-boilerplate.json" id="downloadlink" style="display: none">Download JSON</a>
+		  </div>
 		</div>
-
-
 
 	</body>
 </html>
