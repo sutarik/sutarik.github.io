@@ -264,8 +264,9 @@ function getGroups(){
         }
 
         $("#getGroups").html('GENERATE JSON');
-
-        console.log(groupIds);
+        var col = document.getElementById('constant-col');
+        col.style.display = 'block';
+        //console.log(groupIds);
 
         findTags(groupIds);
     }else{
