@@ -406,6 +406,18 @@ function generateConstantCheckboxes(){
 }
 
 function fillVariables(){
+    var t = $("input[type=text]");
+
+    for(var i=0;i<t.length;i++){
+        var varName = t[i].id;
+
+        for(var j=0;j<modified.containerVersion.variable;j++){
+            if(modified.containerVersion.variable[j].name.replace(/ /g,'') == varName){
+                modified.conainerVersion.variable[j].parameter[0].value = t[i].value;
+                break;
+            }
+        }
+    }
 
 }
 
