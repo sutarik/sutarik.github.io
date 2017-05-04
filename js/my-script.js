@@ -411,9 +411,8 @@ function fillVariables(){
     for(var i=0;i<t.length;i++){
         var varName = t[i].id;
 
-        for(var j=0;j<modified.containerVersion.variable;j++){
-            if(modified.containerVersion.variable[j].name.replace(/ /g,'') == varName){
-                console.log("toto plati ANO ANO ANO");
+        for(var j=0;j<modified.containerVersion.variable.length;j++){
+            if(varName == modified.containerVersion.variable[j].name.replace(/ /g,'')){
                 modified.containerVersion.variable[j].parameter[0].value = t[i].value;
                 break;
             }
