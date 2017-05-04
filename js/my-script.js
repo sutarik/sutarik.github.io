@@ -337,7 +337,7 @@ function getFolderId(){
 
 function modifyObject(){
     
-    var modified = JSON.parse(JSON.stringify(obj));;
+    modified = JSON.parse(JSON.stringify(obj));;
 
     // erase tags
     for(var i = 0; i < modified.containerVersion.tag.length; i++) {
