@@ -434,12 +434,12 @@ function generateCheckboxes(){
         checkbox.name = "folder-" + tags[i].parentFolderId;
         checkbox.value = tags[i].tagId;
         checkbox.id = tags[i].name.replace(/ /g,'');
-        //checkbox.className = "tags";
-        checkbox.className = "hidden-xs-up";
+        checkbox.className = "tags";
+        //checkbox.className = "hidden-xs-up";
 
         var label = document.createElement('label');
         label.className = "tag-label";
-        label.className = "cbx";
+        //label.className = "cbx";
         label.htmlFor = tags[i].name.replace(/ /g,'');
         label.appendChild(document.createTextNode(tags[i].name));
 
