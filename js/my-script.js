@@ -413,7 +413,7 @@ function fillVariables(){
 
         for(var j=0;j<modified.containerVersion.variable;j++){
             if(modified.containerVersion.variable[j].name.replace(/ /g,'') == varName){
-                modified.conainerVersion.variable[j].parameter[0].value = t[i].value;
+                modified.containerVersion.variable[j].parameter[0].value = t[i].value;
                 break;
             }
         }
