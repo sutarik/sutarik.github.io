@@ -7,6 +7,7 @@ var keepVariables = [], keepBuiltInVariables = [], keepTags = [], keepTriggers =
 var keepVariablesID = [], keepBuiltInVariablesID = [], keepTagsID = [], keepTriggersID = [], keepFoldersID = [];
 var constantVariables = [];
 var tags, triggers, variables, folders, bVariables;
+var modified;
 
 // in this object is stored which tags are necessary for cerain checkbox
 // the structure
@@ -254,16 +255,41 @@ function findFolders(keepTags,keepTriggers,keepVariables){
 }
 
 function getGroups(){
-    groupIds = [];
-    var checked = $("input:checked");
-    
-    for(var i=0; i<checked.length; i++){
-        groupIds.push(checked[i].value);
+    if(document.getElementById("getGroups").innerText == "NEXT"){
+        groupIds = [];
+        var checked = $("input:checked");
+        
+        for(var i=0; i<checked.length; i++){
+            groupIds.push(checked[i].value);
+        }
+
+        $("#getGroups").html('GENERATE JSON');
+
+        console.log(groupIds);
+
+        findTags(groupIds);
+    }else{
+        fillVariables();
+
+        var newJSON = JSON.stringify(modified);
+
+        //create new file
+        var textFile = null;
+        var data = new Blob([newJSON], {type: 'text/plain'});
+
+        // If we are replacing a previously generated file we need to
+        // manually revoke the object URL to avoid memory leaks.
+        if (textFile !== null) {
+          window.URL.revokeObjectURL(textFile);
+        }
+
+        textFile = window.URL.createObjectURL(data);
+
+        var link = document.getElementById('downloadlink');
+        link.href = textFile;
+        link.style.display = 'block';
     }
 
-    console.log(groupIds);
-
-    findTags(groupIds);
 }
 
 function getTagId(){
@@ -356,29 +382,6 @@ function modifyObject(){
             i--;
         }
     }
-
-    
-    var newJSON = JSON.stringify(modified); // '{"name":"binchen"}'
-  //  console.log(newJSON);
-    
-   // $("#finalJSON").val("");
-   // $("#finalJSON").val(newJSON);
-
-    //create new file
-    var textFile = null;
-    var data = new Blob([newJSON], {type: 'text/plain'});
-
-    // If we are replacing a previously generated file we need to
-    // manually revoke the object URL to avoid memory leaks.
-    if (textFile !== null) {
-      window.URL.revokeObjectURL(textFile);
-    }
-
-    textFile = window.URL.createObjectURL(data);
-
-    var link = document.getElementById('downloadlink');
-    link.href = textFile;
-    link.style.display = 'block';
 }
 
 function generateConstantCheckboxes(){
@@ -402,6 +405,9 @@ function generateConstantCheckboxes(){
     }
 }
 
+function fillVariables(){
+
+}
 
 function generateCheckboxes(){
     // TO DO
