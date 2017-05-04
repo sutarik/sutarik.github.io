@@ -147,3 +147,7 @@ body {
     width: 55px;
     height: 55px;
 }
+
+input[type=text]{
+    width: 100%;
+}
