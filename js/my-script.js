@@ -264,7 +264,7 @@ function getGroups(){
         }
 
         $("#getGroups").html('GENERATE JSON');
-        var col = document.getElementById('constant-col');
+        var col = document.getElementById('constants-col');
         col.style.display = 'block';
         //console.log(groupIds);
 
