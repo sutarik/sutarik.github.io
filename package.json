@@ -1,0 +1,21 @@
+{
+  "name": "crypto_predictor",
+  "version": "1.0.0",
+  "description": "crypto and twitter prediction",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "crypto",
+    "prediction",
+    "bot"
+  ],
+  "author": "peter sutarik",
+  "license": "ISC",
+  "dependencies": {
+    "node-binance-api": "^0.5.0",
+    "twit": "^2.2.9"
+  }
+}
